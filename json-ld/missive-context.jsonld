@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "missive": "https://missiveapp.com/vocab#",
+    "api": "https://missiveapp.com/docs/developers/",
+
+    "Conversation": "missive:Conversation",
+    "Message": "missive:Message",
+    "Draft": "missive:Draft",
+    "Comment": "missive:Comment",
+    "Post": "missive:Post",
+    "Contact": "schema:Person",
+    "ContactBook": "missive:ContactBook",
+    "ContactGroup": "missive:ContactGroup",
+    "AnalyticsReport": "missive:AnalyticsReport",
+    "Attachment": "schema:MediaObject",
+    "MessageField": "missive:MessageField",
+
+    "id": "@id",
+    "type": "@type",
+
+    "subject": "schema:name",
+    "body": "schema:text",
+    "preview": "schema:description",
+    "created_at": "schema:dateCreated",
+    "updated_at": "schema:dateModified",
+
+    "first_name": "schema:givenName",
+    "last_name": "schema:familyName",
+    "notes": "schema:description",
+    "starred": "missive:starred",
+
+    "from_field": "missive:from",
+    "to_fields": "missive:to",
+    "cc_fields": "missive:cc",
+    "bcc_fields": "missive:bcc",
+    "reply_to_fields": "missive:replyTo",
+    "references": "missive:references",
+    "in_reply_to": "missive:inReplyTo",
+    "external_id": "missive:externalId",
+
+    "name": "schema:name",
+    "address": "schema:email",
+    "phone_number": "schema:telephone",
+    "username": "schema:identifier",
+
+    "filename": "schema:name",
+    "extension": "missive:fileExtension",
+    "media_type": "schema:encodingFormat",
+    "size": "schema:contentSize",
+    "url": "schema:contentUrl",
+    "width": "schema:width",
+    "height": "schema:height",
+
+    "assignees": "missive:assignees",
+    "shared_labels": "missive:sharedLabels",
+    "organization": "missive:organization",
+    "team": "missive:team",
+    "color": "missive:color",
+    "message_count": "missive:messageCount",
+    "last_activity_at": "missive:lastActivityAt",
+    "closed": "missive:closed",
+    "archived": "missive:archived",
+    "flagged": "missive:flagged",
+    "snoozed": "missive:snoozed",
+    "trashed": "missive:trashed",
+    "junked": "missive:junked",
+    "assigned": "missive:assigned",
+    "unassigned": "missive:unassigned",
+
+    "send": "missive:send",
+    "send_at": "missive:sendAt",
+    "auto_followup": "missive:autoFollowup",
+
+    "infos": "missive:contactInfos",
+    "memberships": "missive:memberships",
+    "kind": "missive:kind",
+    "value": "rdf:value",
+    "label": "schema:name",
+    "custom_label": "missive:customLabel",
+
+    "contact_book": "missive:contactBook",
+    "shared": "missive:shared",
+    "group": "missive:group",
+    "title": "schema:jobTitle",
+    "location": "schema:location",
+    "department": "schema:department",
+    "description": "schema:description",
+
+    "start": "schema:startDate",
+    "end": "schema:endDate",
+    "time_zone": "schema:temporalCoverage",
+
+    "author": "schema:author",
+    "mentions": "missive:mentions",
+
+    "baseUrl": "https://public.missiveapp.com/v1/",
+    "humanUrl": "https://missiveapp.com/docs/developers/rest-api",
+    "docsUrl": "https://missiveapp.com/docs/developers/"
+  }
+}

@@ -49,7 +49,7 @@ apis:
       - type: Documentation
         url: https://missiveapp.com/docs/developers/rest-api
       - type: OpenAPI
-        url: https://missiveapp.com/docs/developers/rest-api/endpoints
+        url: https://raw.githubusercontent.com/api-evangelist/missive/refs/heads/main/openapi/missive-rest-api-openapi.yml
     contact:
       - FN: Missive Support
         url: https://missiveapp.com/help

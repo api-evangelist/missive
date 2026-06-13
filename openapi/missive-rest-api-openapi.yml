@@ -1,0 +1,1271 @@
+openapi: 3.0.3
+info:
+  title: Missive REST API
+  description: >-
+    The Missive REST API allows developers to manage conversations, messages,
+    contacts, drafts, labels, and analytics programmatically. Authentication
+    uses Bearer tokens (personal access tokens) generated in Missive
+    preferences. The API requires a Productive plan or higher to generate API
+    tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
+  version: "1"
+  contact:
+    name: Missive Support
+    url: https://missiveapp.com/help
+  termsOfService: https://missiveapp.com/terms
+externalDocs:
+  description: Missive Developer Documentation
+  url: https://missiveapp.com/docs/developers/rest-api
+servers:
+  - url: https://public.missiveapp.com/v1
+    description: Missive REST API v1
+security:
+  - bearerAuth: []
+tags:
+  - name: Analytics
+    description: Create and retrieve analytics reports
+  - name: Contacts
+    description: Manage contacts and contact data
+  - name: Contact Books
+    description: List available contact books
+  - name: Contact Groups
+    description: List contact groups and organizations
+  - name: Conversations
+    description: Manage conversations in the inbox
+  - name: Drafts
+    description: Create and delete draft messages
+  - name: Messages
+    description: Create messages in custom channels
+paths:
+  /analytics/reports:
+    post:
+      operationId: createAnalyticsReport
+      summary: Create Analytics Report
+      description: >-
+        Create an analytics report for an organization. Poll the returned report
+        ID to retrieve data. Reports complete within 2–30 seconds and expire
+        after 60 seconds.
+      tags:
+        - Analytics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAnalyticsReportRequest'
+      responses:
+        '200':
+          description: Report created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsReportCreated'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /analytics/reports/{id}:
+    get:
+      operationId: getAnalyticsReport
+      summary: Get Analytics Report
+      description: Fetch a report using its ID returned by a Create report request.
+      tags:
+        - Analytics
+      parameters:
+        - $ref: '#/components/parameters/reportId'
+      responses:
+        '200':
+          description: Analytics report data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsReport'
+        '404':
+          description: Report not found or expired
+  /contacts:
+    get:
+      operationId: listContacts
+      summary: List Contacts
+      description: List contacts in a contact book.
+      tags:
+        - Contacts
+      parameters:
+        - name: contact_book
+          in: query
+          required: true
+          description: ID of the contact book to list contacts from
+          schema:
+            type: string
+        - name: order
+          in: query
+          schema:
+            type: string
+            enum: [last_name, first_name, created_at]
+        - name: limit
+          in: query
+          description: Maximum number of contacts to return (max 200)
+          schema:
+            type: integer
+            maximum: 200
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: modified_since
+          in: query
+          description: Unix timestamp; return contacts modified after this time
+          schema:
+            type: integer
+            format: int64
+        - name: include_deleted
+          in: query
+          schema:
+            type: boolean
+        - name: search
+          in: query
+          description: Search query string
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Array of contact objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    post:
+      operationId: createContact
+      summary: Create Contact(s)
+      description: Create one or more contacts in a contact book.
+      tags:
+        - Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContactRequest'
+      responses:
+        '201':
+          description: Contact(s) created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /contacts/{id}:
+    get:
+      operationId: getContact
+      summary: Get Contact
+      description: Fetch a specific contact using the contact ID.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/contactId'
+      responses:
+        '200':
+          description: Single contact object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+        '404':
+          description: Contact not found or deleted
+    patch:
+      operationId: updateContact
+      summary: Update Contact(s)
+      description: >-
+        Update one or more contacts. Pass only attributes needing updates.
+        The id parameter supports comma-separated IDs for bulk updates.
+      tags:
+        - Contacts
+      parameters:
+        - $ref: '#/components/parameters/contactId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContactRequest'
+      responses:
+        '200':
+          description: Updated contact object(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Contact not found
+  /contact_books:
+    get:
+      operationId: listContactBooks
+      summary: List Contact Books
+      description: List contact books the authenticated user has access to.
+      tags:
+        - Contact Books
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of results (default 50, max 200)
+          schema:
+            type: integer
+            default: 50
+            maximum: 200
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Array of contact book objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactBooksResponse'
+  /contact_groups:
+    get:
+      operationId: listContactGroups
+      summary: List Contact Groups
+      description: List contact groups or organizations within a contact book.
+      tags:
+        - Contact Groups
+      parameters:
+        - name: contact_book
+          in: query
+          required: true
+          description: ID of the contact book
+          schema:
+            type: string
+        - name: kind
+          in: query
+          required: true
+          description: Type of group to list
+          schema:
+            type: string
+            enum: [group, organization]
+        - name: limit
+          in: query
+          description: Maximum number of results (default 50, max 200)
+          schema:
+            type: integer
+            default: 50
+            maximum: 200
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Array of contact group objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupsResponse'
+  /conversations:
+    get:
+      operationId: listConversations
+      summary: List Conversations
+      description: >-
+        List conversations. At least one mailbox filter must be provided.
+        Conversations are ordered newest to oldest by last activity.
+        Pagination uses the last_activity_at timestamp of the last item as the
+        until parameter.
+      tags:
+        - Conversations
+      parameters:
+        - name: inbox
+          in: query
+          schema:
+            type: boolean
+        - name: all
+          in: query
+          schema:
+            type: boolean
+        - name: assigned
+          in: query
+          schema:
+            type: boolean
+        - name: closed
+          in: query
+          schema:
+            type: boolean
+        - name: snoozed
+          in: query
+          schema:
+            type: boolean
+        - name: flagged
+          in: query
+          schema:
+            type: boolean
+        - name: trashed
+          in: query
+          schema:
+            type: boolean
+        - name: junked
+          in: query
+          schema:
+            type: boolean
+        - name: drafts
+          in: query
+          schema:
+            type: boolean
+        - name: shared_label
+          in: query
+          description: Shared label ID to filter by
+          schema:
+            type: string
+        - name: team_inbox
+          in: query
+          description: Team ID to filter team inbox
+          schema:
+            type: string
+        - name: team_closed
+          in: query
+          description: Team ID to filter closed team conversations
+          schema:
+            type: string
+        - name: team_all
+          in: query
+          description: Team ID for all team conversations
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Number of conversations (default 25, max 50)
+          schema:
+            type: integer
+            default: 25
+            maximum: 50
+        - name: until
+          in: query
+          description: Unix timestamp for cursor-based pagination
+          schema:
+            type: integer
+            format: int64
+        - name: organization
+          in: query
+          description: Filter by organization ID
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: Filter by email address
+          schema:
+            type: string
+        - name: domain
+          in: query
+          description: Filter by email domain
+          schema:
+            type: string
+        - name: contact_organization
+          in: query
+          description: Filter by contact organization ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Array of conversation objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationsResponse'
+  /conversations/{id}:
+    get:
+      operationId: getConversation
+      summary: Get Conversation
+      description: Fetch a specific conversation using its ID.
+      tags:
+        - Conversations
+      parameters:
+        - $ref: '#/components/parameters/conversationId'
+      responses:
+        '200':
+          description: Single conversation object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '404':
+          description: Conversation not found
+    patch:
+      operationId: updateConversation
+      summary: Update Conversation(s)
+      description: >-
+        Update one or more conversations. The id parameter supports
+        comma-separated IDs for bulk operations.
+      tags:
+        - Conversations
+      parameters:
+        - $ref: '#/components/parameters/conversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConversationRequest'
+      responses:
+        '200':
+          description: Updated conversation object(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Conversation not found
+  /conversations/{id}/messages:
+    get:
+      operationId: listConversationMessages
+      summary: List Conversation Messages
+      description: List messages within a conversation.
+      tags:
+        - Conversations
+      parameters:
+        - $ref: '#/components/parameters/conversationId'
+        - name: limit
+          in: query
+          description: Number of messages (default 10, max 10)
+          schema:
+            type: integer
+            default: 10
+            maximum: 10
+        - name: until
+          in: query
+          description: Unix timestamp for cursor pagination
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Array of message objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessagesResponse'
+  /conversations/{id}/comments:
+    get:
+      operationId: listConversationComments
+      summary: List Conversation Comments
+      description: List comments (internal notes) within a conversation.
+      tags:
+        - Conversations
+      parameters:
+        - $ref: '#/components/parameters/conversationId'
+        - name: limit
+          in: query
+          description: Number of comments (default 10, max 10)
+          schema:
+            type: integer
+            default: 10
+            maximum: 10
+        - name: until
+          in: query
+          description: Unix timestamp for cursor pagination
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Array of comment objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentsResponse'
+  /conversations/{id}/drafts:
+    get:
+      operationId: listConversationDrafts
+      summary: List Conversation Drafts
+      description: List drafts within a conversation.
+      tags:
+        - Conversations
+      parameters:
+        - $ref: '#/components/parameters/conversationId'
+        - name: limit
+          in: query
+          description: Number of drafts (default 10, max 10)
+          schema:
+            type: integer
+            default: 10
+            maximum: 10
+        - name: until
+          in: query
+          description: Unix timestamp for cursor pagination
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Array of draft objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DraftsResponse'
+  /conversations/{id}/posts:
+    get:
+      operationId: listConversationPosts
+      summary: List Conversation Posts
+      description: List posts within a conversation.
+      tags:
+        - Conversations
+      parameters:
+        - $ref: '#/components/parameters/conversationId'
+        - name: limit
+          in: query
+          description: Number of posts (default 10, max 10)
+          schema:
+            type: integer
+            default: 10
+            maximum: 10
+        - name: until
+          in: query
+          description: Unix timestamp for cursor pagination
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Array of post objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsResponse'
+  /conversations/{id}/merge:
+    post:
+      operationId: mergeConversations
+      summary: Merge Conversations
+      description: Merge a conversation into a target conversation.
+      tags:
+        - Conversations
+      parameters:
+        - $ref: '#/components/parameters/conversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeConversationRequest'
+      responses:
+        '200':
+          description: Merged conversation object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /drafts:
+    post:
+      operationId: createDraft
+      summary: Create Draft
+      description: >-
+        Create a draft message. Supports email, SMS, and WhatsApp channels.
+        Set send=true to send immediately. Supports conversation threading,
+        assignees, shared labels, and auto-followup.
+      tags:
+        - Drafts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDraftRequest'
+      responses:
+        '201':
+          description: Draft created (may have empty body if sent immediately)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DraftResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /drafts/{id}:
+    delete:
+      operationId: deleteDraft
+      summary: Delete Draft
+      description: Delete a draft from a conversation.
+      tags:
+        - Drafts
+      parameters:
+        - $ref: '#/components/parameters/draftId'
+      responses:
+        '200':
+          description: Draft deleted successfully
+        '404':
+          description: Draft not found
+  /messages:
+    post:
+      operationId: createMessage
+      summary: Create Message
+      description: >-
+        Create an incoming message in a custom channel. Used to ingest
+        messages from external communication sources into Missive.
+      tags:
+        - Messages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMessageRequest'
+      responses:
+        '201':
+          description: Message created in conversation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Personal access token generated in Missive preferences.
+        Format: Bearer missive_pat-[token]. Requires Productive plan or higher.
+  parameters:
+    reportId:
+      name: id
+      in: path
+      required: true
+      description: Analytics report ID
+      schema:
+        type: string
+    contactId:
+      name: id
+      in: path
+      required: true
+      description: Contact ID (supports comma-separated IDs for bulk operations)
+      schema:
+        type: string
+    contactBookId:
+      name: id
+      in: path
+      required: true
+      description: Contact book ID
+      schema:
+        type: string
+    conversationId:
+      name: id
+      in: path
+      required: true
+      description: Conversation ID (supports comma-separated IDs for bulk operations)
+      schema:
+        type: string
+    draftId:
+      name: id
+      in: path
+      required: true
+      description: Draft message ID
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    # Analytics
+    CreateAnalyticsReportRequest:
+      type: object
+      required:
+        - organization
+        - start
+        - end
+      properties:
+        organization:
+          type: string
+          description: Organization ID
+        start:
+          type: integer
+          format: int64
+          description: Start timestamp (Unix)
+        end:
+          type: integer
+          format: int64
+          description: End timestamp (Unix)
+        time_zone:
+          type: string
+          description: IANA timezone string (e.g., "America/New_York")
+        teams:
+          type: array
+          items:
+            type: string
+          description: Filter by team IDs
+        users:
+          type: array
+          items:
+            type: string
+          description: Filter by user IDs
+        accounts:
+          type: array
+          items:
+            type: string
+          description: Filter by account IDs
+        account_types:
+          type: array
+          items:
+            type: string
+          description: Filter by account types
+        shared_labels:
+          type: array
+          items:
+            type: string
+          description: Filter by shared label IDs
+    AnalyticsReportCreated:
+      type: object
+      properties:
+        reports:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Report ID for polling
+    AnalyticsReport:
+      type: object
+      properties:
+        reports:
+          type: object
+          description: Report data object
+          additionalProperties: true
+    # Contacts
+    ContactInfo:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum: [email, twitter, phone_number, facebook, physical_address, url, custom]
+        value:
+          type: string
+        label:
+          type: string
+        custom_label:
+          type: string
+    ContactMembership:
+      type: object
+      required:
+        - group
+      properties:
+        group:
+          type: string
+          description: Group or organization ID
+        title:
+          type: string
+        location:
+          type: string
+        department:
+          type: string
+        description:
+          type: string
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    CreateContactRequest:
+      type: object
+      required:
+        - contact_book
+      properties:
+        contact_book:
+          type: string
+          description: Contact book ID
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+    UpdateContactRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+    ContactResponse:
+      type: object
+      properties:
+        contacts:
+          $ref: '#/components/schemas/Contact'
+    ContactsResponse:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    ContactBook:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        shared:
+          type: boolean
+    ContactBooksResponse:
+      type: object
+      properties:
+        contact_books:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactBook'
+    ContactGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        kind:
+          type: string
+          enum: [group, organization]
+    ContactGroupsResponse:
+      type: object
+      properties:
+        contact_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroup'
+    # Conversations
+    MessageField:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        color:
+          type: string
+        organization:
+          type: string
+        team:
+          type: string
+        assignees:
+          type: array
+          items:
+            type: string
+        shared_labels:
+          type: array
+          items:
+            type: string
+        message_count:
+          type: integer
+        last_activity_at:
+          type: integer
+          format: int64
+        assigned:
+          type: boolean
+        unassigned:
+          type: boolean
+        closed:
+          type: boolean
+        archived:
+          type: boolean
+        flagged:
+          type: boolean
+        snoozed:
+          type: boolean
+        trashed:
+          type: boolean
+        junked:
+          type: boolean
+    ConversationResponse:
+      type: object
+      properties:
+        conversations:
+          $ref: '#/components/schemas/Conversation'
+    ConversationsResponse:
+      type: object
+      properties:
+        conversations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
+    UpdateConversationRequest:
+      type: object
+      properties:
+        subject:
+          type: string
+        color:
+          type: string
+        organization:
+          type: string
+        team:
+          type: string
+        add_users:
+          type: array
+          items:
+            type: string
+        add_assignees:
+          type: array
+          items:
+            type: string
+        remove_assignees:
+          type: array
+          items:
+            type: string
+        add_shared_labels:
+          type: array
+          items:
+            type: string
+        remove_shared_labels:
+          type: array
+          items:
+            type: string
+        add_to_inbox:
+          type: boolean
+        add_to_team_inbox:
+          type: string
+          description: Team ID to add to that team's inbox
+        close:
+          type: boolean
+        reopen:
+          type: boolean
+    MergeConversationRequest:
+      type: object
+      required:
+        - target
+      properties:
+        target:
+          type: string
+          description: Destination conversation ID
+        subject:
+          type: string
+          description: Subject for the merged conversation
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        preview:
+          type: string
+        body:
+          type: string
+        type:
+          type: string
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        cc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        bcc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        references:
+          type: array
+          items:
+            type: string
+        in_reply_to:
+          type: array
+          items:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    MessagesResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        mentions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+    CommentsResponse:
+      type: object
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+    PostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+    # Drafts
+    CreateDraftRequest:
+      type: object
+      properties:
+        subject:
+          type: string
+        body:
+          type: string
+          description: HTML body content
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        cc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        bcc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              base64_data:
+                type: string
+        conversation:
+          type: string
+          description: Conversation ID to add draft to
+        references:
+          type: array
+          items:
+            type: string
+          description: Email Message-IDs for threading
+        team:
+          type: string
+        force_team:
+          type: boolean
+        organization:
+          type: string
+        add_users:
+          type: array
+          items:
+            type: string
+        add_assignees:
+          type: array
+          items:
+            type: string
+        remove_assignees:
+          type: array
+          items:
+            type: string
+        add_shared_labels:
+          type: array
+          items:
+            type: string
+        remove_shared_labels:
+          type: array
+          items:
+            type: string
+        send:
+          type: boolean
+          description: Send immediately if true
+        send_at:
+          type: integer
+          format: int64
+          description: Unix timestamp to schedule sending
+        auto_followup:
+          type: boolean
+          description: Enable auto follow-up
+        external_response_id:
+          type: string
+          description: WhatsApp template ID
+        external_response_variables:
+          type: object
+          description: WhatsApp template variable substitutions
+          additionalProperties:
+            type: string
+    DraftResponse:
+      type: object
+      properties:
+        drafts:
+          $ref: '#/components/schemas/Message'
+    DraftsResponse:
+      type: object
+      properties:
+        drafts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    # Messages
+    CreateMessageRequest:
+      type: object
+      required:
+        - account
+        - from_field
+        - to_fields
+        - body
+      properties:
+        account:
+          type: string
+          description: Custom channel account ID
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        body:
+          type: string
+        subject:
+          type: string
+        external_id:
+          type: string
+          description: External message identifier for deduplication
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              base64_data:
+                type: string
+    MessageResponse:
+      type: object
+      properties:
+        messages:
+          $ref: '#/components/schemas/Message'

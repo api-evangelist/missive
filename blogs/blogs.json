@@ -1,0 +1,10 @@
+{
+  "name": "Missive Blog",
+  "description": "The official Missive blog covering product updates, team collaboration, customer service, and productivity tips.",
+  "url": "https://missiveapp.com/blog",
+  "rssUrl": null,
+  "rssFetchStatus": "not_found",
+  "rssFetchNote": "No RSS/Atom feed discovered at standard paths (/blog/feed.xml, /feed.xml, /blog/rss). The blog appears to be a custom-rendered site without a machine-readable feed.",
+  "lastChecked": "2026-06-12",
+  "posts": []
+}
