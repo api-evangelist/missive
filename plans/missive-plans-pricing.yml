@@ -1,0 +1,78 @@
+name: Missive Plans and Pricing
+description: >-
+  Missive offers three paid subscription plans billed per user per month, with
+  a 20% discount for annual billing. API access is available on the Productive
+  plan and above. All plans include a 30-day free trial with no credit card
+  required.
+specificationVersion: "0.1"
+url: https://missiveapp.com/pricing
+plans:
+  - name: Starter
+    description: >-
+      Entry-level plan for small teams needing shared inbox and basic
+      collaboration features. Supports up to 5 users. Includes email, SMS,
+      and social media accounts, team spaces and inboxes, conversations and
+      tasks, and SOC 2 Type II compliance. API access is not included.
+    url: https://missiveapp.com/pricing
+    price: 14.00
+    unit: user/month
+    currency: USD
+    billingCycle: monthly
+    annualPrice: 11.20
+    annualUnit: user/month
+    features:
+      - Email, SMS, and social accounts
+      - Team spaces and inboxes
+      - Conversations and tasks
+      - SOC 2 Type II compliance
+    limitations:
+      - Up to 5 users
+      - No API access
+      - No external tool integrations
+      - No automation rules
+
+  - name: Productive
+    description: >-
+      Mid-tier plan for growing teams requiring API access, automation rules,
+      and integrations. Supports up to 50 users. Includes everything in Starter
+      plus external tool integrations, rules and automations (up to 1000),
+      basic analytics and reporting, and REST API access.
+    url: https://missiveapp.com/pricing
+    price: 24.00
+    unit: user/month
+    currency: USD
+    billingCycle: monthly
+    annualPrice: 19.20
+    annualUnit: user/month
+    features:
+      - Everything in Starter
+      - REST API access
+      - External tool integrations
+      - Rules and automations (up to 1000)
+      - Basic analytics and reporting
+    limitations:
+      - Up to 50 users
+      - No SAML/SSO
+      - No IP restrictions
+      - No advanced analytics
+
+  - name: Business
+    description: >-
+      Enterprise-grade plan for large organizations requiring advanced security
+      controls, SSO, and personalized onboarding. Supports unlimited users.
+      Includes everything in Productive plus SAML and SSO, IP restrictions,
+      advanced analytics and reporting, and personalized team onboarding.
+    url: https://missiveapp.com/pricing
+    price: 36.00
+    unit: user/month
+    currency: USD
+    billingCycle: monthly
+    annualPrice: 28.80
+    annualUnit: user/month
+    features:
+      - Everything in Productive
+      - Unlimited users
+      - SAML and SSO
+      - IP restrictions
+      - Advanced analytics and reporting
+      - Personalized team onboarding

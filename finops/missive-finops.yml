@@ -1,0 +1,91 @@
+name: Missive FinOps
+description: >-
+  FinOps Framework 1.0 FOCUS-aligned cost and usage data for the Missive team
+  inbox and collaboration platform. Missive uses per-seat SaaS pricing with
+  three tiers billed monthly or annually. API access is gated to the Productive
+  plan and above. Cost optimization levers include annual billing (20% discount)
+  and right-sizing seat counts to the appropriate plan tier.
+specificationVersion: "1.0"
+url: https://missiveapp.com/pricing
+
+provider:
+  name: Missive
+  url: https://missiveapp.com
+  category: Team Inbox and Collaboration
+
+billingModel:
+  type: per-seat
+  description: >-
+    Missive charges per user per month across three plan tiers. Annual billing
+    provides a 20% discount compared to monthly billing. API access requires
+    at minimum the Productive plan subscription.
+  currency: USD
+  billingCycles:
+    - monthly
+    - annually
+
+costs:
+  - name: Starter Plan
+    description: Entry-level tier for teams up to 5 users, no API access
+    chargeType: Usage-based
+    unit: user/month
+    monthlyUnitPrice: 14.00
+    annualUnitPrice: 11.20
+    currency: USD
+    tags:
+      - plan:starter
+      - api-access:false
+
+  - name: Productive Plan
+    description: Mid-tier plan with API access for teams up to 50 users
+    chargeType: Usage-based
+    unit: user/month
+    monthlyUnitPrice: 24.00
+    annualUnitPrice: 19.20
+    currency: USD
+    tags:
+      - plan:productive
+      - api-access:true
+
+  - name: Business Plan
+    description: Enterprise plan with SSO and unlimited users
+    chargeType: Usage-based
+    unit: user/month
+    monthlyUnitPrice: 36.00
+    annualUnitPrice: 28.80
+    currency: USD
+    tags:
+      - plan:business
+      - api-access:true
+
+optimization:
+  - name: Annual Billing Discount
+    description: >-
+      Switching from monthly to annual billing yields a 20% cost reduction
+      across all plan tiers. For example, a team of 10 on Productive saves
+      $576/year ($24 vs $19.20 per user per month).
+    savingsPercentage: 20
+    applicablePlans:
+      - Starter
+      - Productive
+      - Business
+
+  - name: Plan Right-Sizing
+    description: >-
+      Teams that do not require API access can use the Starter plan at $14/user
+      instead of Productive at $24/user, saving $10/user/month. Review which
+      users require API tokens and downgrade seats that do not.
+    savingsPercentage: 42
+    applicablePlans:
+      - Starter vs Productive
+
+  - name: API Token Scope Review
+    description: >-
+      API tokens in Missive grant access to all accounts the user can access,
+      including shared accounts. Audit token holders regularly to ensure only
+      necessary users are on Productive or Business plans.
+
+costAllocationTags:
+  - plan
+  - api-access
+  - team

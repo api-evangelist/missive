@@ -1,0 +1,81 @@
+name: Missive
+description: >-
+  Missive is a team inbox and collaboration platform that brings email, SMS,
+  WhatsApp, Instagram, Facebook Messenger, and live chat into one unified
+  workspace. It provides a REST API for managing conversations, messages,
+  contacts, labels, drafts, analytics, and automation rules, enabling teams to
+  integrate Missive into business workflows. The API supports webhooks for
+  real-time event notifications, custom channels for integrating external
+  communication sources, and UI/iFrame integrations via JavaScript. Developers
+  can automate drafts, sync contacts, generate analytics reports, and build
+  custom integrations with the platform.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/missive/refs/heads/main/apis.yml
+created: "2026-06-12"
+modified: "2026-06-12"
+specificationVersion: "0.19"
+aid: missive
+tags:
+  - Team Inbox
+  - Collaboration
+  - Email
+  - Messaging
+  - Conversations
+  - Contacts
+  - Webhooks
+  - Automation
+  - REST API
+apis:
+  - name: Missive REST API
+    description: >-
+      The Missive REST API allows developers to manage conversations, messages,
+      contacts, drafts, labels, and analytics programmatically. Authentication
+      uses Bearer tokens (personal access tokens) generated in Missive
+      preferences. The API base URL is https://public.missiveapp.com/v1/ and
+      requires a Productive plan or higher to generate API tokens. Responses are
+      JSON-formatted with HTTP 200 or 201 success codes.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://missiveapp.com/docs/developers/rest-api
+    baseURL: https://public.missiveapp.com/v1/
+    tags:
+      - Conversations
+      - Messages
+      - Contacts
+      - Drafts
+      - Analytics
+      - Labels
+    properties:
+      - type: Documentation
+        url: https://missiveapp.com/docs/developers/rest-api
+      - type: OpenAPI
+        url: https://missiveapp.com/docs/developers/rest-api/endpoints
+    contact:
+      - FN: Missive Support
+        url: https://missiveapp.com/help
+common:
+  - type: Website
+    url: https://missiveapp.com
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/
+  - type: GitHubOrg
+    url: https://github.com/missive
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/missive-app
+  - type: Blog
+    url: https://missiveapp.com/blog
+  - type: Pricing
+    url: https://missiveapp.com/pricing
+  - type: StatusPage
+    url: https://status.missiveapp.com/
+  - type: X
+    url: https://twitter.com/missiveapp
+  - type: Plans
+    url: plans/missive-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/missive-rate-limits.yml
+  - type: FinOps
+    url: finops/missive-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,39 @@
+name: Missive API Rate Limits
+description: >-
+  The Missive REST API enforces rate limits to ensure fair usage and platform
+  stability. Limits apply per API token. When a rate limit is exceeded, the API
+  returns HTTP 429 Too Many Requests. Rate limit information is documented at
+  https://missiveapp.com/help/api-documentation/rate-limits.
+specificationVersion: "0.1"
+url: https://missiveapp.com/help/api-documentation/rate-limits
+rateLimits:
+  - name: Concurrent Requests Limit
+    description: >-
+      Maximum number of simultaneous API requests allowed at any given time per
+      API token. Exceeding this limit returns HTTP 429 Too Many Requests.
+    limit: 5
+    unit: concurrent requests
+    window: simultaneous
+    scope: per token
+
+  - name: Requests Per Minute
+    description: >-
+      Maximum number of API requests allowed within a rolling 60-second window
+      per API token. Exceeding this limit returns HTTP 429 Too Many Requests.
+    limit: 300
+    unit: requests
+    window: 60 seconds
+    scope: per token
+
+  - name: Requests Per 15 Minutes
+    description: >-
+      Maximum number of API requests allowed within a rolling 15-minute window
+      per API token. Exceeding this limit returns HTTP 429 Too Many Requests.
+    limit: 900
+    unit: requests
+    window: 900 seconds
+    scope: per token
+
+errorResponses:
+  - statusCode: 429
+    description: Too Many Requests — returned when any rate limit is exceeded
