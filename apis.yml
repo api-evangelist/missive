@@ -10,7 +10,7 @@ description: >-
   can automate drafts, sync contacts, generate analytics reports, and build
   custom integrations with the platform.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/missive/refs/heads/main/apis.yml
 created: "2026-06-12"
 modified: "2026-06-12"
@@ -35,7 +35,7 @@ apis:
       preferences. The API base URL is https://public.missiveapp.com/v1/ and
       requires a Productive plan or higher to generate API tokens. Responses are
       JSON-formatted with HTTP 200 or 201 success codes.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://missiveapp.com/docs/developers/rest-api
     baseURL: https://public.missiveapp.com/v1/
     tags:
