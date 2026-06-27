@@ -4,19 +4,19 @@
   "url": "https://missiveapp.com/blog",
   "rssUrl": null,
   "rssFetchStatus": "not_found",
-  "rssFetchNote": "No RSS/Atom feed discovered at standard paths (/blog/feed.xml, /feed.xml, /blog/rss). The blog appears to be a custom-rendered site without a machine-readable feed.",
-  "lastChecked": "2026-06-12",
+  "rssFetchNote": "No RSS/Atom feed discovered at standard paths (/blog/feed.xml, /blog/feed/, /feed.xml, /rss.xml, /blog/index.xml, /blog/atom.xml). The blog is a custom-rendered site without a machine-readable feed; posts are surfaced via HTML scraping.",
+  "lastChecked": "2026-06-21",
   "posts": [],
   "repo": "missive",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/company/missive-app",
-      "feed_url": "https://www.linkedin.com/company/missive-app",
-      "title": "",
+      "source": "https://missiveapp.com/blog",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:54:28Z",
+  "agent_pulled": "2026-06-27"
 }
