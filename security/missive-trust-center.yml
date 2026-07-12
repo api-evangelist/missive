@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://missiveapp.com/security
+url: https://missiveapp.com/security
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://missiveapp.com/security
+  keywords:
+  - soc 2
+  - gdpr

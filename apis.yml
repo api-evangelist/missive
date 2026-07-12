@@ -54,6 +54,14 @@ apis:
       - FN: Missive Support
         url: https://missiveapp.com/help
 common:
+  - type: TrustCenter
+    url: security/missive-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/missive-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/missive-domain-security.yml
+  - type: Authentication
+    url: authentication/missive-authentication.yml
   - type: Website
     url: https://missiveapp.com
   - type: Documentation
