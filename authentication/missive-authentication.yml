@@ -8,7 +8,7 @@ schemes:
 - name: bearerAuth
   type: http
   scheme: bearer
-  description: 'Personal access token generated in Missive preferences. Format: Bearer missive_pat-[token].
+  description: 'Personal access token generated in Missive preferences. Format: Bearer [example key][token].
     Requires Productive plan or higher.'
   sources:
   - openapi/missive-rest-api-openapi.yml
