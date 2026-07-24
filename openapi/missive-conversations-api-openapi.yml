@@ -1,0 +1,592 @@
+openapi: 3.0.3
+info:
+  title: Missive REST Analytics Conversations API
+  description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
+  version: '1'
+  contact:
+    name: Missive Support
+    url: https://missiveapp.com/help
+  termsOfService: https://missiveapp.com/terms
+servers:
+- url: https://public.missiveapp.com/v1
+  description: Missive REST API v1
+security:
+- bearerAuth: []
+tags:
+- name: Conversations
+  description: Manage conversations in the inbox
+paths:
+  /conversations:
+    get:
+      operationId: listConversations
+      summary: List Conversations
+      description: List conversations. At least one mailbox filter must be provided. Conversations are ordered newest to oldest by last activity. Pagination uses the last_activity_at timestamp of the last item as the until parameter.
+      tags:
+      - Conversations
+      parameters:
+      - name: inbox
+        in: query
+        schema:
+          type: boolean
+      - name: all
+        in: query
+        schema:
+          type: boolean
+      - name: assigned
+        in: query
+        schema:
+          type: boolean
+      - name: closed
+        in: query
+        schema:
+          type: boolean
+      - name: snoozed
+        in: query
+        schema:
+          type: boolean
+      - name: flagged
+        in: query
+        schema:
+          type: boolean
+      - name: trashed
+        in: query
+        schema:
+          type: boolean
+      - name: junked
+        in: query
+        schema:
+          type: boolean
+      - name: drafts
+        in: query
+        schema:
+          type: boolean
+      - name: shared_label
+        in: query
+        description: Shared label ID to filter by
+        schema:
+          type: string
+      - name: team_inbox
+        in: query
+        description: Team ID to filter team inbox
+        schema:
+          type: string
+      - name: team_closed
+        in: query
+        description: Team ID to filter closed team conversations
+        schema:
+          type: string
+      - name: team_all
+        in: query
+        description: Team ID for all team conversations
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of conversations (default 25, max 50)
+        schema:
+          type: integer
+          default: 25
+          maximum: 50
+      - name: until
+        in: query
+        description: Unix timestamp for cursor-based pagination
+        schema:
+          type: integer
+          format: int64
+      - name: organization
+        in: query
+        description: Filter by organization ID
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: Filter by email address
+        schema:
+          type: string
+      - name: domain
+        in: query
+        description: Filter by email domain
+        schema:
+          type: string
+      - name: contact_organization
+        in: query
+        description: Filter by contact organization ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of conversation objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationsResponse'
+  /conversations/{id}:
+    get:
+      operationId: getConversation
+      summary: Get Conversation
+      description: Fetch a specific conversation using its ID.
+      tags:
+      - Conversations
+      parameters:
+      - $ref: '#/components/parameters/conversationId'
+      responses:
+        '200':
+          description: Single conversation object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '404':
+          description: Conversation not found
+    patch:
+      operationId: updateConversation
+      summary: Update Conversation(s)
+      description: Update one or more conversations. The id parameter supports comma-separated IDs for bulk operations.
+      tags:
+      - Conversations
+      parameters:
+      - $ref: '#/components/parameters/conversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConversationRequest'
+      responses:
+        '200':
+          description: Updated conversation object(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Conversation not found
+  /conversations/{id}/messages:
+    get:
+      operationId: listConversationMessages
+      summary: List Conversation Messages
+      description: List messages within a conversation.
+      tags:
+      - Conversations
+      parameters:
+      - $ref: '#/components/parameters/conversationId'
+      - name: limit
+        in: query
+        description: Number of messages (default 10, max 10)
+        schema:
+          type: integer
+          default: 10
+          maximum: 10
+      - name: until
+        in: query
+        description: Unix timestamp for cursor pagination
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Array of message objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessagesResponse'
+  /conversations/{id}/comments:
+    get:
+      operationId: listConversationComments
+      summary: List Conversation Comments
+      description: List comments (internal notes) within a conversation.
+      tags:
+      - Conversations
+      parameters:
+      - $ref: '#/components/parameters/conversationId'
+      - name: limit
+        in: query
+        description: Number of comments (default 10, max 10)
+        schema:
+          type: integer
+          default: 10
+          maximum: 10
+      - name: until
+        in: query
+        description: Unix timestamp for cursor pagination
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Array of comment objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentsResponse'
+  /conversations/{id}/drafts:
+    get:
+      operationId: listConversationDrafts
+      summary: List Conversation Drafts
+      description: List drafts within a conversation.
+      tags:
+      - Conversations
+      parameters:
+      - $ref: '#/components/parameters/conversationId'
+      - name: limit
+        in: query
+        description: Number of drafts (default 10, max 10)
+        schema:
+          type: integer
+          default: 10
+          maximum: 10
+      - name: until
+        in: query
+        description: Unix timestamp for cursor pagination
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Array of draft objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DraftsResponse'
+  /conversations/{id}/posts:
+    get:
+      operationId: listConversationPosts
+      summary: List Conversation Posts
+      description: List posts within a conversation.
+      tags:
+      - Conversations
+      parameters:
+      - $ref: '#/components/parameters/conversationId'
+      - name: limit
+        in: query
+        description: Number of posts (default 10, max 10)
+        schema:
+          type: integer
+          default: 10
+          maximum: 10
+      - name: until
+        in: query
+        description: Unix timestamp for cursor pagination
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Array of post objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsResponse'
+  /conversations/{id}/merge:
+    post:
+      operationId: mergeConversations
+      summary: Merge Conversations
+      description: Merge a conversation into a target conversation.
+      tags:
+      - Conversations
+      parameters:
+      - $ref: '#/components/parameters/conversationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeConversationRequest'
+      responses:
+        '200':
+          description: Merged conversation object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  schemas:
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        color:
+          type: string
+        organization:
+          type: string
+        team:
+          type: string
+        assignees:
+          type: array
+          items:
+            type: string
+        shared_labels:
+          type: array
+          items:
+            type: string
+        message_count:
+          type: integer
+        last_activity_at:
+          type: integer
+          format: int64
+        assigned:
+          type: boolean
+        unassigned:
+          type: boolean
+        closed:
+          type: boolean
+        archived:
+          type: boolean
+        flagged:
+          type: boolean
+        snoozed:
+          type: boolean
+        trashed:
+          type: boolean
+        junked:
+          type: boolean
+    MessageField:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+    MessagesResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    ConversationsResponse:
+      type: object
+      properties:
+        conversations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
+    MergeConversationRequest:
+      type: object
+      required:
+      - target
+      properties:
+        target:
+          type: string
+          description: Destination conversation ID
+        subject:
+          type: string
+          description: Subject for the merged conversation
+    CommentsResponse:
+      type: object
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    ConversationResponse:
+      type: object
+      properties:
+        conversations:
+          $ref: '#/components/schemas/Conversation'
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        preview:
+          type: string
+        body:
+          type: string
+        type:
+          type: string
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        cc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        bcc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        references:
+          type: array
+          items:
+            type: string
+        in_reply_to:
+          type: array
+          items:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    UpdateConversationRequest:
+      type: object
+      properties:
+        subject:
+          type: string
+        color:
+          type: string
+        organization:
+          type: string
+        team:
+          type: string
+        add_users:
+          type: array
+          items:
+            type: string
+        add_assignees:
+          type: array
+          items:
+            type: string
+        remove_assignees:
+          type: array
+          items:
+            type: string
+        add_shared_labels:
+          type: array
+          items:
+            type: string
+        remove_shared_labels:
+          type: array
+          items:
+            type: string
+        add_to_inbox:
+          type: boolean
+        add_to_team_inbox:
+          type: string
+          description: Team ID to add to that team's inbox
+        close:
+          type: boolean
+        reopen:
+          type: boolean
+    PostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        mentions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+    DraftsResponse:
+      type: object
+      properties:
+        drafts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    conversationId:
+      name: id
+      in: path
+      required: true
+      description: Conversation ID (supports comma-separated IDs for bulk operations)
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal access token generated in Missive preferences. Format: Bearer missive_pat-[token]. Requires Productive plan or higher.'
+externalDocs:
+  description: Missive Developer Documentation
+  url: https://missiveapp.com/docs/developers/rest-api

@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: Missive REST Analytics API
+  description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
+  version: '1'
+  contact:
+    name: Missive Support
+    url: https://missiveapp.com/help
+  termsOfService: https://missiveapp.com/terms
+servers:
+- url: https://public.missiveapp.com/v1
+  description: Missive REST API v1
+security:
+- bearerAuth: []
+tags:
+- name: Analytics
+  description: Create and retrieve analytics reports
+paths:
+  /analytics/reports:
+    post:
+      operationId: createAnalyticsReport
+      summary: Create Analytics Report
+      description: Create an analytics report for an organization. Poll the returned report ID to retrieve data. Reports complete within 2–30 seconds and expire after 60 seconds.
+      tags:
+      - Analytics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAnalyticsReportRequest'
+      responses:
+        '200':
+          description: Report created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsReportCreated'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /analytics/reports/{id}:
+    get:
+      operationId: getAnalyticsReport
+      summary: Get Analytics Report
+      description: Fetch a report using its ID returned by a Create report request.
+      tags:
+      - Analytics
+      parameters:
+      - $ref: '#/components/parameters/reportId'
+      responses:
+        '200':
+          description: Analytics report data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsReport'
+        '404':
+          description: Report not found or expired
+components:
+  parameters:
+    reportId:
+      name: id
+      in: path
+      required: true
+      description: Analytics report ID
+      schema:
+        type: string
+  schemas:
+    CreateAnalyticsReportRequest:
+      type: object
+      required:
+      - organization
+      - start
+      - end
+      properties:
+        organization:
+          type: string
+          description: Organization ID
+        start:
+          type: integer
+          format: int64
+          description: Start timestamp (Unix)
+        end:
+          type: integer
+          format: int64
+          description: End timestamp (Unix)
+        time_zone:
+          type: string
+          description: IANA timezone string (e.g., "America/New_York")
+        teams:
+          type: array
+          items:
+            type: string
+          description: Filter by team IDs
+        users:
+          type: array
+          items:
+            type: string
+          description: Filter by user IDs
+        accounts:
+          type: array
+          items:
+            type: string
+          description: Filter by account IDs
+        account_types:
+          type: array
+          items:
+            type: string
+          description: Filter by account types
+        shared_labels:
+          type: array
+          items:
+            type: string
+          description: Filter by shared label IDs
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    AnalyticsReport:
+      type: object
+      properties:
+        reports:
+          type: object
+          description: Report data object
+          additionalProperties: true
+    AnalyticsReportCreated:
+      type: object
+      properties:
+        reports:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Report ID for polling
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal access token generated in Missive preferences. Format: Bearer missive_pat-[token]. Requires Productive plan or higher.'
+externalDocs:
+  description: Missive Developer Documentation
+  url: https://missiveapp.com/docs/developers/rest-api

@@ -1,0 +1,180 @@
+openapi: 3.0.3
+info:
+  title: Missive REST Analytics Messages API
+  description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
+  version: '1'
+  contact:
+    name: Missive Support
+    url: https://missiveapp.com/help
+  termsOfService: https://missiveapp.com/terms
+servers:
+- url: https://public.missiveapp.com/v1
+  description: Missive REST API v1
+security:
+- bearerAuth: []
+tags:
+- name: Messages
+  description: Create messages in custom channels
+paths:
+  /messages:
+    post:
+      operationId: createMessage
+      summary: Create Message
+      description: Create an incoming message in a custom channel. Used to ingest messages from external communication sources into Missive.
+      tags:
+      - Messages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMessageRequest'
+      responses:
+        '201':
+          description: Message created in conversation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  schemas:
+    MessageField:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    MessageResponse:
+      type: object
+      properties:
+        messages:
+          $ref: '#/components/schemas/Message'
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        preview:
+          type: string
+        body:
+          type: string
+        type:
+          type: string
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        cc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        bcc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        references:
+          type: array
+          items:
+            type: string
+        in_reply_to:
+          type: array
+          items:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    CreateMessageRequest:
+      type: object
+      required:
+      - account
+      - from_field
+      - to_fields
+      - body
+      properties:
+        account:
+          type: string
+          description: Custom channel account ID
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        body:
+          type: string
+        subject:
+          type: string
+        external_id:
+          type: string
+          description: External message identifier for deduplication
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              base64_data:
+                type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal access token generated in Missive preferences. Format: Bearer missive_pat-[token]. Requires Productive plan or higher.'
+externalDocs:
+  description: Missive Developer Documentation
+  url: https://missiveapp.com/docs/developers/rest-api

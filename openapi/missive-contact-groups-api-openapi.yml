@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Missive REST Analytics Contact Groups API
+  description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
+  version: '1'
+  contact:
+    name: Missive Support
+    url: https://missiveapp.com/help
+  termsOfService: https://missiveapp.com/terms
+servers:
+- url: https://public.missiveapp.com/v1
+  description: Missive REST API v1
+security:
+- bearerAuth: []
+tags:
+- name: Contact Groups
+  description: List contact groups and organizations
+paths:
+  /contact_groups:
+    get:
+      operationId: listContactGroups
+      summary: List Contact Groups
+      description: List contact groups or organizations within a contact book.
+      tags:
+      - Contact Groups
+      parameters:
+      - name: contact_book
+        in: query
+        required: true
+        description: ID of the contact book
+        schema:
+          type: string
+      - name: kind
+        in: query
+        required: true
+        description: Type of group to list
+        schema:
+          type: string
+          enum:
+          - group
+          - organization
+      - name: limit
+        in: query
+        description: Maximum number of results (default 50, max 200)
+        schema:
+          type: integer
+          default: 50
+          maximum: 200
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Array of contact group objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupsResponse'
+components:
+  schemas:
+    ContactGroupsResponse:
+      type: object
+      properties:
+        contact_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroup'
+    ContactGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        kind:
+          type: string
+          enum:
+          - group
+          - organization
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal access token generated in Missive preferences. Format: Bearer missive_pat-[token]. Requires Productive plan or higher.'
+externalDocs:
+  description: Missive Developer Documentation
+  url: https://missiveapp.com/docs/developers/rest-api

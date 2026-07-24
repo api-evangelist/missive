@@ -1,0 +1,286 @@
+openapi: 3.0.3
+info:
+  title: Missive REST Analytics Contacts API
+  description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
+  version: '1'
+  contact:
+    name: Missive Support
+    url: https://missiveapp.com/help
+  termsOfService: https://missiveapp.com/terms
+servers:
+- url: https://public.missiveapp.com/v1
+  description: Missive REST API v1
+security:
+- bearerAuth: []
+tags:
+- name: Contacts
+  description: Manage contacts and contact data
+paths:
+  /contacts:
+    get:
+      operationId: listContacts
+      summary: List Contacts
+      description: List contacts in a contact book.
+      tags:
+      - Contacts
+      parameters:
+      - name: contact_book
+        in: query
+        required: true
+        description: ID of the contact book to list contacts from
+        schema:
+          type: string
+      - name: order
+        in: query
+        schema:
+          type: string
+          enum:
+          - last_name
+          - first_name
+          - created_at
+      - name: limit
+        in: query
+        description: Maximum number of contacts to return (max 200)
+        schema:
+          type: integer
+          maximum: 200
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      - name: modified_since
+        in: query
+        description: Unix timestamp; return contacts modified after this time
+        schema:
+          type: integer
+          format: int64
+      - name: include_deleted
+        in: query
+        schema:
+          type: boolean
+      - name: search
+        in: query
+        description: Search query string
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of contact objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    post:
+      operationId: createContact
+      summary: Create Contact(s)
+      description: Create one or more contacts in a contact book.
+      tags:
+      - Contacts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContactRequest'
+      responses:
+        '201':
+          description: Contact(s) created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /contacts/{id}:
+    get:
+      operationId: getContact
+      summary: Get Contact
+      description: Fetch a specific contact using the contact ID.
+      tags:
+      - Contacts
+      parameters:
+      - $ref: '#/components/parameters/contactId'
+      responses:
+        '200':
+          description: Single contact object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+        '404':
+          description: Contact not found or deleted
+    patch:
+      operationId: updateContact
+      summary: Update Contact(s)
+      description: Update one or more contacts. Pass only attributes needing updates. The id parameter supports comma-separated IDs for bulk updates.
+      tags:
+      - Contacts
+      parameters:
+      - $ref: '#/components/parameters/contactId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateContactRequest'
+      responses:
+        '200':
+          description: Updated contact object(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Contact not found
+components:
+  parameters:
+    contactId:
+      name: id
+      in: path
+      required: true
+      description: Contact ID (supports comma-separated IDs for bulk operations)
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    UpdateContactRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    ContactsResponse:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    ContactResponse:
+      type: object
+      properties:
+        contacts:
+          $ref: '#/components/schemas/Contact'
+    ContactInfo:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - email
+          - twitter
+          - phone_number
+          - facebook
+          - physical_address
+          - url
+          - custom
+        value:
+          type: string
+        label:
+          type: string
+        custom_label:
+          type: string
+    ContactMembership:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          type: string
+          description: Group or organization ID
+        title:
+          type: string
+        location:
+          type: string
+        department:
+          type: string
+        description:
+          type: string
+    CreateContactRequest:
+      type: object
+      required:
+      - contact_book
+      properties:
+        contact_book:
+          type: string
+          description: Contact book ID
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal access token generated in Missive preferences. Format: Bearer missive_pat-[token]. Requires Productive plan or higher.'
+externalDocs:
+  description: Missive Developer Documentation
+  url: https://missiveapp.com/docs/developers/rest-api

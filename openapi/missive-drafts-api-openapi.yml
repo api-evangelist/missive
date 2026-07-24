@@ -1,0 +1,252 @@
+openapi: 3.0.3
+info:
+  title: Missive REST Analytics Drafts API
+  description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
+  version: '1'
+  contact:
+    name: Missive Support
+    url: https://missiveapp.com/help
+  termsOfService: https://missiveapp.com/terms
+servers:
+- url: https://public.missiveapp.com/v1
+  description: Missive REST API v1
+security:
+- bearerAuth: []
+tags:
+- name: Drafts
+  description: Create and delete draft messages
+paths:
+  /drafts:
+    post:
+      operationId: createDraft
+      summary: Create Draft
+      description: Create a draft message. Supports email, SMS, and WhatsApp channels. Set send=true to send immediately. Supports conversation threading, assignees, shared labels, and auto-followup.
+      tags:
+      - Drafts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDraftRequest'
+      responses:
+        '201':
+          description: Draft created (may have empty body if sent immediately)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DraftResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /drafts/{id}:
+    delete:
+      operationId: deleteDraft
+      summary: Delete Draft
+      description: Delete a draft from a conversation.
+      tags:
+      - Drafts
+      parameters:
+      - $ref: '#/components/parameters/draftId'
+      responses:
+        '200':
+          description: Draft deleted successfully
+        '404':
+          description: Draft not found
+components:
+  schemas:
+    MessageField:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    DraftResponse:
+      type: object
+      properties:
+        drafts:
+          $ref: '#/components/schemas/Message'
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        preview:
+          type: string
+        body:
+          type: string
+        type:
+          type: string
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        cc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        bcc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        references:
+          type: array
+          items:
+            type: string
+        in_reply_to:
+          type: array
+          items:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    CreateDraftRequest:
+      type: object
+      properties:
+        subject:
+          type: string
+        body:
+          type: string
+          description: HTML body content
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        cc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        bcc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              base64_data:
+                type: string
+        conversation:
+          type: string
+          description: Conversation ID to add draft to
+        references:
+          type: array
+          items:
+            type: string
+          description: Email Message-IDs for threading
+        team:
+          type: string
+        force_team:
+          type: boolean
+        organization:
+          type: string
+        add_users:
+          type: array
+          items:
+            type: string
+        add_assignees:
+          type: array
+          items:
+            type: string
+        remove_assignees:
+          type: array
+          items:
+            type: string
+        add_shared_labels:
+          type: array
+          items:
+            type: string
+        remove_shared_labels:
+          type: array
+          items:
+            type: string
+        send:
+          type: boolean
+          description: Send immediately if true
+        send_at:
+          type: integer
+          format: int64
+          description: Unix timestamp to schedule sending
+        auto_followup:
+          type: boolean
+          description: Enable auto follow-up
+        external_response_id:
+          type: string
+          description: WhatsApp template ID
+        external_response_variables:
+          type: object
+          description: WhatsApp template variable substitutions
+          additionalProperties:
+            type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    draftId:
+      name: id
+      in: path
+      required: true
+      description: Draft message ID
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Personal access token generated in Missive preferences. Format: Bearer missive_pat-[token]. Requires Productive plan or higher.'
+externalDocs:
+  description: Missive Developer Documentation
+  url: https://missiveapp.com/docs/developers/rest-api
