@@ -10,7 +10,20 @@ description: >-
   can automate drafts, sync contacts, generate analytics reports, and build
   custom integrations with the platform.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: open
+  trial: true
+  try_now: true
+  public: true
+  label: Paid (free trial) · Open access
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/missive.png
 url: https://raw.githubusercontent.com/api-evangelist/missive/refs/heads/main/apis.yml
 created: "2026-06-12"
 modified: "2026-06-12"
@@ -27,32 +40,90 @@ tags:
   - Automation
   - REST API
 apis:
-  - name: Missive REST API
-    description: >-
-      The Missive REST API allows developers to manage conversations, messages,
-      contacts, drafts, labels, and analytics programmatically. Authentication
-      uses Bearer tokens (personal access tokens) generated in Missive
-      preferences. The API base URL is https://public.missiveapp.com/v1/ and
-      requires a Productive plan or higher to generate API tokens. Responses are
-      JSON-formatted with HTTP 200 or 201 success codes.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://missiveapp.com/docs/developers/rest-api
-    baseURL: https://public.missiveapp.com/v1/
-    tags:
-      - Conversations
-      - Messages
-      - Contacts
-      - Drafts
-      - Analytics
-      - Labels
-    properties:
-      - type: Documentation
-        url: https://missiveapp.com/docs/developers/rest-api
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/missive/refs/heads/main/openapi/missive-rest-api-openapi.yml
-    contact:
-      - FN: Missive Support
-        url: https://missiveapp.com/help
+- aid: missive:missive-analytics-api
+  name: Missive Analytics API
+  description: Create and retrieve analytics reports
+  humanURL: https://missiveapp.com/docs/developers/rest-api
+  baseURL: https://public.missiveapp.com/v1/
+  tags:
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/missive-analytics-api-openapi.yml
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/rest-api
+- aid: missive:missive-contact-books-api
+  name: Missive Contact Books API
+  description: List available contact books
+  humanURL: https://missiveapp.com/docs/developers/rest-api
+  baseURL: https://public.missiveapp.com/v1/
+  tags:
+  - Contact Books
+  properties:
+  - type: OpenAPI
+    url: openapi/missive-contact-books-api-openapi.yml
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/rest-api
+- aid: missive:missive-contact-groups-api
+  name: Missive Contact Groups API
+  description: List contact groups and organizations
+  humanURL: https://missiveapp.com/docs/developers/rest-api
+  baseURL: https://public.missiveapp.com/v1/
+  tags:
+  - Contact Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/missive-contact-groups-api-openapi.yml
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/rest-api
+- aid: missive:missive-contacts-api
+  name: Missive Contacts API
+  description: Manage contacts and contact data
+  humanURL: https://missiveapp.com/docs/developers/rest-api
+  baseURL: https://public.missiveapp.com/v1/
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/missive-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/rest-api
+- aid: missive:missive-conversations-api
+  name: Missive Conversations API
+  description: Manage conversations in the inbox
+  humanURL: https://missiveapp.com/docs/developers/rest-api
+  baseURL: https://public.missiveapp.com/v1/
+  tags:
+  - Conversations
+  properties:
+  - type: OpenAPI
+    url: openapi/missive-conversations-api-openapi.yml
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/rest-api
+- aid: missive:missive-drafts-api
+  name: Missive Drafts API
+  description: Create and delete draft messages
+  humanURL: https://missiveapp.com/docs/developers/rest-api
+  baseURL: https://public.missiveapp.com/v1/
+  tags:
+  - Drafts
+  properties:
+  - type: OpenAPI
+    url: openapi/missive-drafts-api-openapi.yml
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/rest-api
+- aid: missive:missive-messages-api
+  name: Missive Messages API
+  description: Create messages in custom channels
+  humanURL: https://missiveapp.com/docs/developers/rest-api
+  baseURL: https://public.missiveapp.com/v1/
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/missive-messages-api-openapi.yml
+  - type: Documentation
+    url: https://missiveapp.com/docs/developers/rest-api
 common:
   - type: AgenticAccess
     url: agentic-access/missive-agentic-access.yml
