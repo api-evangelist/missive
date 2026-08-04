@@ -1,0 +1,26 @@
+{
+  "provider": "missive",
+  "sources": [
+    "missive-analytics-api-openapi.yml",
+    "missive-contact-books-api-openapi.yml",
+    "missive-contact-groups-api-openapi.yml",
+    "missive-contacts-api-openapi.yml",
+    "missive-conversations-api-openapi.yml",
+    "missive-drafts-api-openapi.yml",
+    "missive-messages-api-openapi.yml"
+  ],
+  "outputs": [
+    "missive-analytics-api-openapi.yml",
+    "missive-contact-books-api-openapi.yml",
+    "missive-contact-groups-api-openapi.yml",
+    "missive-contacts-api-openapi.yml",
+    "missive-conversations-api-openapi.yml",
+    "missive-drafts-api-openapi.yml",
+    "missive-messages-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
