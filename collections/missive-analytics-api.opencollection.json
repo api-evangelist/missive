@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Missive REST Analytics API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Analytics Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public.missiveapp.com/v1/analytics/reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an analytics report for an organization. Poll the returned report ID to retrieve data. Reports complete within 2–30 seconds and expire after 60 seconds."
+        },
+        {
+          "info": {
+            "name": "Get Analytics Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/analytics/reports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Analytics report ID"
+              }
+            ]
+          },
+          "docs": "Fetch a report using its ID returned by a Create report request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

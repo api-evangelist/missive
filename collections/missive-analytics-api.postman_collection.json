@@ -1,0 +1,341 @@
+{
+  "item": [
+    {
+      "id": "7f9d74b7-b3e5-41dc-b979-7200ad4f8858",
+      "name": "Analytics",
+      "description": {
+        "content": "Create and retrieve analytics reports",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b524ffc9-bbf5-485f-a2fa-f2f0a4c3caa6",
+          "name": "Create Analytics Report",
+          "request": {
+            "name": "Create Analytics Report",
+            "description": {
+              "content": "Create an analytics report for an organization. Poll the returned report ID to retrieve data. Reports complete within 2–30 seconds and expire after 60 seconds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organization\": \"<string>\",\n  \"start\": \"<long>\",\n  \"end\": \"<long>\",\n  \"time_zone\": \"<string>\",\n  \"teams\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"account_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c51d247-54a0-4349-a6ee-8a69b3805755",
+              "name": "Report created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization\": \"<string>\",\n  \"start\": \"<long>\",\n  \"end\": \"<long>\",\n  \"time_zone\": \"<string>\",\n  \"teams\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"account_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reports\": {\n    \"id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe33b0e9-e0b8-4f0e-a09a-eecc535e2563",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization\": \"<string>\",\n  \"start\": \"<long>\",\n  \"end\": \"<long>\",\n  \"time_zone\": \"<string>\",\n  \"teams\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"account_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bf61deb-83ed-4490-956a-4eedc0c66e66",
+          "name": "Get Analytics Report",
+          "request": {
+            "name": "Get Analytics Report",
+            "description": {
+              "content": "Fetch a report using its ID returned by a Create report request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analytics",
+                "reports",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Analytics report ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53729f5d-32d6-4e3e-b14e-57d2ea58ecbd",
+              "name": "Analytics report data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "reports",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Analytics report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reports\": {\n    \"key_0\": 6050,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b833bdff-94bc-415c-8995-27d94e41b538",
+              "name": "Report not found or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analytics",
+                    "reports",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Analytics report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public.missiveapp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8cc973ab-dcba-4150-8578-032fb208692e",
+    "name": "Missive REST Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.\n\nContact Support:\n Name: Missive Support",
+      "type": "text/plain"
+    }
+  }
+}

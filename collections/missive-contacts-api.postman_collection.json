@@ -1,0 +1,787 @@
+{
+  "item": [
+    {
+      "id": "39916996-1620-452a-a89e-db61b7705811",
+      "name": "Contacts",
+      "description": {
+        "content": "Manage contacts and contact data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1d841f6f-cc34-42b3-b460-64143a78d60e",
+          "name": "List Contacts",
+          "request": {
+            "name": "List Contacts",
+            "description": {
+              "content": "List contacts in a contact book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contact_book",
+                  "value": "<string>",
+                  "description": "(Required) ID of the contact book to list contacts from"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of contacts to return (max 200)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modified_since",
+                  "value": "<long>",
+                  "description": "Unix timestamp; return contacts modified after this time"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_deleted",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search query string"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba1d9b32-d04e-4ac0-819f-07f0f1df8efc",
+              "name": "Array of contact objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contact_book",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "modified_since",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contacts\": [\n    {\n      \"id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"starred\": true,\n      \"notes\": \"string\",\n      \"infos\": [\n        {\n          \"kind\": \"custom\",\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"custom_label\": \"string\"\n        },\n        {\n          \"kind\": \"url\",\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"custom_label\": \"string\"\n        }\n      ],\n      \"memberships\": [\n        {\n          \"group\": \"string\",\n          \"title\": \"string\",\n          \"location\": \"string\",\n          \"department\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"group\": \"string\",\n          \"title\": \"string\",\n          \"location\": \"string\",\n          \"department\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"created_at\": 8359,\n      \"updated_at\": 8514\n    },\n    {\n      \"id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"starred\": true,\n      \"notes\": \"string\",\n      \"infos\": [\n        {\n          \"kind\": \"twitter\",\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"custom_label\": \"string\"\n        },\n        {\n          \"kind\": \"twitter\",\n          \"value\": \"string\",\n          \"label\": \"string\",\n          \"custom_label\": \"string\"\n        }\n      ],\n      \"memberships\": [\n        {\n          \"group\": \"string\",\n          \"title\": \"string\",\n          \"location\": \"string\",\n          \"department\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"group\": \"string\",\n          \"title\": \"string\",\n          \"location\": \"string\",\n          \"department\": \"string\",\n          \"description\": \"string\"\n        }\n      ],\n      \"created_at\": 3715,\n      \"updated_at\": 6989\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4954e74a-d074-4f2c-811b-2072bd58d3a3",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contact_book",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "modified_since",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include_deleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92a6a04e-f376-4d37-a1ea-73e2e1a48efd",
+          "name": "Create Contact(s)",
+          "request": {
+            "name": "Create Contact(s)",
+            "description": {
+              "content": "Create one or more contacts in a contact book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contact_book\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"starred\": \"<boolean>\",\n  \"notes\": \"<string>\",\n  \"infos\": [\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    }\n  ],\n  \"memberships\": [\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7612847-0ffc-4732-9fd9-ef00828fb87f",
+              "name": "Contact(s) created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_book\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"starred\": \"<boolean>\",\n  \"notes\": \"<string>\",\n  \"infos\": [\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    }\n  ],\n  \"memberships\": [\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contacts\": [\n    {\n      \"id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"starred\": false,\n      \"notes\": \"string\",\n      \"infos\": [\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        }\n      ],\n      \"memberships\": [\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"created_at\": 104,\n      \"updated_at\": 7899\n    },\n    {\n      \"id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"starred\": true,\n      \"notes\": \"string\",\n      \"infos\": [\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        }\n      ],\n      \"memberships\": [\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"created_at\": 5164,\n      \"updated_at\": 3088\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a8c2a3e-db20-454d-b1d4-02c4d0dfea2c",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"contact_book\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"starred\": \"<boolean>\",\n  \"notes\": \"<string>\",\n  \"infos\": [\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    }\n  ],\n  \"memberships\": [\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a0e240a-fe22-4c83-b8b5-aa80e3a0d3df",
+          "name": "Get Contact",
+          "request": {
+            "name": "Get Contact",
+            "description": {
+              "content": "Fetch a specific contact using the contact ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Contact ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc22b89f-3c48-41e3-bbc6-5ba356dfa1c4",
+              "name": "Single contact object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Contact ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contacts\": {\n    \"id\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"starred\": true,\n    \"notes\": \"string\",\n    \"infos\": [\n      {\n        \"kind\": \"<string>\",\n        \"value\": \"<string>\",\n        \"label\": \"<string>\",\n        \"custom_label\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\",\n        \"value\": \"<string>\",\n        \"label\": \"<string>\",\n        \"custom_label\": \"<string>\"\n      }\n    ],\n    \"memberships\": [\n      {\n        \"group\": \"<string>\",\n        \"title\": \"<string>\",\n        \"location\": \"<string>\",\n        \"department\": \"<string>\",\n        \"description\": \"<string>\"\n      },\n      {\n        \"group\": \"<string>\",\n        \"title\": \"<string>\",\n        \"location\": \"<string>\",\n        \"department\": \"<string>\",\n        \"description\": \"<string>\"\n      }\n    ],\n    \"created_at\": 1477,\n    \"updated_at\": 5786\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bec1b23b-d8f2-44ca-8bdc-f4d1d700ce34",
+              "name": "Contact not found or deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Contact ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "366f9505-405b-4f6b-8450-967b01f280a3",
+          "name": "Update Contact(s)",
+          "request": {
+            "name": "Update Contact(s)",
+            "description": {
+              "content": "Update one or more contacts. Pass only attributes needing updates. The id parameter supports comma-separated IDs for bulk updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contacts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Contact ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"starred\": \"<boolean>\",\n  \"notes\": \"<string>\",\n  \"infos\": [\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    }\n  ],\n  \"memberships\": [\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a3f716a-a875-4ba1-87b1-15a2e12a3081",
+              "name": "Updated contact object(s)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Contact ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"starred\": \"<boolean>\",\n  \"notes\": \"<string>\",\n  \"infos\": [\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    }\n  ],\n  \"memberships\": [\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contacts\": [\n    {\n      \"id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"starred\": false,\n      \"notes\": \"string\",\n      \"infos\": [\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        }\n      ],\n      \"memberships\": [\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"created_at\": 104,\n      \"updated_at\": 7899\n    },\n    {\n      \"id\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"starred\": true,\n      \"notes\": \"string\",\n      \"infos\": [\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_label\": \"<string>\"\n        }\n      ],\n      \"memberships\": [\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"group\": \"<string>\",\n          \"title\": \"<string>\",\n          \"location\": \"<string>\",\n          \"department\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"created_at\": 5164,\n      \"updated_at\": 3088\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5d71010-000f-4e20-b807-721d7b7e5146",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Contact ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"starred\": \"<boolean>\",\n  \"notes\": \"<string>\",\n  \"infos\": [\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    }\n  ],\n  \"memberships\": [\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c264347-7ad0-428d-a52d-ad4e15218511",
+              "name": "Contact not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contacts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Contact ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"starred\": \"<boolean>\",\n  \"notes\": \"<string>\",\n  \"infos\": [\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_label\": \"<string>\"\n    }\n  ],\n  \"memberships\": [\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"group\": \"<string>\",\n      \"title\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public.missiveapp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f62f62f-5dea-4873-8d06-ebd747c39cf2",
+    "name": "Missive REST Analytics Contacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.\n\nContact Support:\n Name: Missive Support",
+      "type": "text/plain"
+    }
+  }
+}

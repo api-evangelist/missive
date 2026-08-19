@@ -1,0 +1,1339 @@
+{
+  "item": [
+    {
+      "id": "607bb9a4-87e8-4fce-b509-fc62fcad3fd9",
+      "name": "Conversations",
+      "description": {
+        "content": "Manage conversations in the inbox",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "afb50e81-121e-40e1-97f1-c960a1cedab6",
+          "name": "List Conversations",
+          "request": {
+            "name": "List Conversations",
+            "description": {
+              "content": "List conversations. At least one mailbox filter must be provided. Conversations are ordered newest to oldest by last activity. Pagination uses the last_activity_at timestamp of the last item as the until parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "inbox",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "all",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "assigned",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "closed",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "snoozed",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "flagged",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "trashed",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "junked",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "drafts",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "shared_label",
+                  "value": "<string>",
+                  "description": "Shared label ID to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "team_inbox",
+                  "value": "<string>",
+                  "description": "Team ID to filter team inbox"
+                },
+                {
+                  "disabled": false,
+                  "key": "team_closed",
+                  "value": "<string>",
+                  "description": "Team ID to filter closed team conversations"
+                },
+                {
+                  "disabled": false,
+                  "key": "team_all",
+                  "value": "<string>",
+                  "description": "Team ID for all team conversations"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Number of conversations (default 25, max 50)"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<long>",
+                  "description": "Unix timestamp for cursor-based pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization",
+                  "value": "<string>",
+                  "description": "Filter by organization ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "Filter by email address"
+                },
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "Filter by email domain"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_organization",
+                  "value": "<string>",
+                  "description": "Filter by contact organization ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06751d31-e8fc-4ede-b1f6-8453ad40c0b8",
+              "name": "Array of conversation objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inbox",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "all",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "assigned",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "closed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "snoozed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "flagged",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "trashed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "junked",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "drafts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "shared_label",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "team_inbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "team_closed",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "team_all",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_organization",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversations\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"color\": \"string\",\n      \"organization\": \"string\",\n      \"team\": \"string\",\n      \"assignees\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shared_labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message_count\": 8861,\n      \"last_activity_at\": 819,\n      \"assigned\": false,\n      \"unassigned\": false,\n      \"closed\": true,\n      \"archived\": true,\n      \"flagged\": true,\n      \"snoozed\": false,\n      \"trashed\": false,\n      \"junked\": false\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"color\": \"string\",\n      \"organization\": \"string\",\n      \"team\": \"string\",\n      \"assignees\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shared_labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message_count\": 3644,\n      \"last_activity_at\": 7221,\n      \"assigned\": true,\n      \"unassigned\": false,\n      \"closed\": true,\n      \"archived\": false,\n      \"flagged\": false,\n      \"snoozed\": false,\n      \"trashed\": true,\n      \"junked\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e07d106e-9363-4f91-9865-44134c20747b",
+          "name": "Get Conversation",
+          "request": {
+            "name": "Get Conversation",
+            "description": {
+              "content": "Fetch a specific conversation using its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccd7d3eb-3fba-4d27-8dc3-c3bb4e1f25a0",
+              "name": "Single conversation object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversations\": {\n    \"id\": \"string\",\n    \"subject\": \"string\",\n    \"color\": \"string\",\n    \"organization\": \"string\",\n    \"team\": \"string\",\n    \"assignees\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"message_count\": 505,\n    \"last_activity_at\": 7350,\n    \"assigned\": true,\n    \"unassigned\": false,\n    \"closed\": true,\n    \"archived\": false,\n    \"flagged\": true,\n    \"snoozed\": false,\n    \"trashed\": false,\n    \"junked\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d823d11c-74c6-4fe8-bb21-4cf5258bcae3",
+              "name": "Conversation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4952f886-51a5-4fec-a871-38e6fbf1a7ef",
+          "name": "Update Conversation(s)",
+          "request": {
+            "name": "Update Conversation(s)",
+            "description": {
+              "content": "Update one or more conversations. The id parameter supports comma-separated IDs for bulk operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"color\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"team\": \"<string>\",\n  \"add_users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_to_inbox\": \"<boolean>\",\n  \"add_to_team_inbox\": \"<string>\",\n  \"close\": \"<boolean>\",\n  \"reopen\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3641adac-2f6d-4138-972d-dc37eac4a0e1",
+              "name": "Updated conversation object(s)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"color\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"team\": \"<string>\",\n  \"add_users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_to_inbox\": \"<boolean>\",\n  \"add_to_team_inbox\": \"<string>\",\n  \"close\": \"<boolean>\",\n  \"reopen\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversations\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"color\": \"string\",\n      \"organization\": \"string\",\n      \"team\": \"string\",\n      \"assignees\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shared_labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message_count\": 9875,\n      \"last_activity_at\": 2885,\n      \"assigned\": false,\n      \"unassigned\": false,\n      \"closed\": true,\n      \"archived\": false,\n      \"flagged\": true,\n      \"snoozed\": false,\n      \"trashed\": true,\n      \"junked\": false\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"color\": \"string\",\n      \"organization\": \"string\",\n      \"team\": \"string\",\n      \"assignees\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shared_labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message_count\": 6236,\n      \"last_activity_at\": 6791,\n      \"assigned\": true,\n      \"unassigned\": true,\n      \"closed\": false,\n      \"archived\": true,\n      \"flagged\": false,\n      \"snoozed\": false,\n      \"trashed\": true,\n      \"junked\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f163369-b671-49e0-8db7-4a24ae2cf8a0",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"color\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"team\": \"<string>\",\n  \"add_users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_to_inbox\": \"<boolean>\",\n  \"add_to_team_inbox\": \"<string>\",\n  \"close\": \"<boolean>\",\n  \"reopen\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2d8d4fa-d15c-4d65-b5a3-5bf22cf2b8dc",
+              "name": "Conversation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"color\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"team\": \"<string>\",\n  \"add_users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_to_inbox\": \"<boolean>\",\n  \"add_to_team_inbox\": \"<string>\",\n  \"close\": \"<boolean>\",\n  \"reopen\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8cc0c59-4e79-4aea-93a1-26d0892186e2",
+          "name": "List Conversation Messages",
+          "request": {
+            "name": "List Conversation Messages",
+            "description": {
+              "content": "List messages within a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of messages (default 10, max 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<long>",
+                  "description": "Unix timestamp for cursor pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6eb20fcc-75e6-4550-9340-cc4b81d938fb",
+              "name": "Array of message objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"preview\": \"string\",\n      \"body\": \"string\",\n      \"type\": \"string\",\n      \"from_field\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"phone_number\": \"string\",\n        \"id\": \"string\",\n        \"username\": \"string\"\n      },\n      \"to_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"cc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"bcc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"references\": [\n        \"string\",\n        \"string\"\n      ],\n      \"in_reply_to\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 6439,\n          \"url\": \"string\",\n          \"width\": 6735,\n          \"height\": 7570\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 8132,\n          \"url\": \"string\",\n          \"width\": 3603,\n          \"height\": 5063\n        }\n      ],\n      \"created_at\": 8005,\n      \"updated_at\": 4372\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"preview\": \"string\",\n      \"body\": \"string\",\n      \"type\": \"string\",\n      \"from_field\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"phone_number\": \"string\",\n        \"id\": \"string\",\n        \"username\": \"string\"\n      },\n      \"to_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"cc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"bcc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"references\": [\n        \"string\",\n        \"string\"\n      ],\n      \"in_reply_to\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 7280,\n          \"url\": \"string\",\n          \"width\": 3349,\n          \"height\": 5043\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 1247,\n          \"url\": \"string\",\n          \"width\": 6644,\n          \"height\": 4862\n        }\n      ],\n      \"created_at\": 6014,\n      \"updated_at\": 2057\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66a99682-f241-41ae-baa9-cc8de618dd8e",
+          "name": "List Conversation Comments",
+          "request": {
+            "name": "List Conversation Comments",
+            "description": {
+              "content": "List comments (internal notes) within a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of comments (default 10, max 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<long>",
+                  "description": "Unix timestamp for cursor pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74e7f25f-b733-42be-a323-9eaf745b8852",
+              "name": "Array of comment objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comments\": [\n    {\n      \"id\": \"string\",\n      \"body\": \"string\",\n      \"author\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"mentions\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 91,\n          \"url\": \"string\",\n          \"width\": 2109,\n          \"height\": 1846\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 6397,\n          \"url\": \"string\",\n          \"width\": 1022,\n          \"height\": 80\n        }\n      ],\n      \"created_at\": 7065\n    },\n    {\n      \"id\": \"string\",\n      \"body\": \"string\",\n      \"author\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"mentions\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 1480,\n          \"url\": \"string\",\n          \"width\": 2569,\n          \"height\": 3204\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 7446,\n          \"url\": \"string\",\n          \"width\": 2966,\n          \"height\": 4367\n        }\n      ],\n      \"created_at\": 6023\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9bc40d4-0539-43a2-af59-85298439bee1",
+          "name": "List Conversation Drafts",
+          "request": {
+            "name": "List Conversation Drafts",
+            "description": {
+              "content": "List drafts within a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of drafts (default 10, max 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<long>",
+                  "description": "Unix timestamp for cursor pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1e0f262-4f52-4abd-b13d-869eb97f06cc",
+              "name": "Array of draft objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"drafts\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"preview\": \"string\",\n      \"body\": \"string\",\n      \"type\": \"string\",\n      \"from_field\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"phone_number\": \"string\",\n        \"id\": \"string\",\n        \"username\": \"string\"\n      },\n      \"to_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"cc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"bcc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"references\": [\n        \"string\",\n        \"string\"\n      ],\n      \"in_reply_to\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 7192,\n          \"url\": \"string\",\n          \"width\": 5215,\n          \"height\": 9660\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 3242,\n          \"url\": \"string\",\n          \"width\": 7691,\n          \"height\": 704\n        }\n      ],\n      \"created_at\": 8301,\n      \"updated_at\": 641\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"preview\": \"string\",\n      \"body\": \"string\",\n      \"type\": \"string\",\n      \"from_field\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"phone_number\": \"string\",\n        \"id\": \"string\",\n        \"username\": \"string\"\n      },\n      \"to_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"cc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"bcc_fields\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"phone_number\": \"string\",\n          \"id\": \"string\",\n          \"username\": \"string\"\n        }\n      ],\n      \"references\": [\n        \"string\",\n        \"string\"\n      ],\n      \"in_reply_to\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 7644,\n          \"url\": \"string\",\n          \"width\": 8017,\n          \"height\": 7151\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 5673,\n          \"url\": \"string\",\n          \"width\": 4888,\n          \"height\": 7085\n        }\n      ],\n      \"created_at\": 4145,\n      \"updated_at\": 2535\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9136bbb5-0e62-4f2e-9952-a1112b5a964d",
+          "name": "List Conversation Posts",
+          "request": {
+            "name": "List Conversation Posts",
+            "description": {
+              "content": "List posts within a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "posts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of posts (default 10, max 10)"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<long>",
+                  "description": "Unix timestamp for cursor pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6785ad9d-bc73-4974-920b-12f6b7745740",
+              "name": "Array of post objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"posts\": [\n    {\n      \"id\": \"string\",\n      \"body\": \"string\",\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 3199,\n          \"url\": \"string\",\n          \"width\": 7252,\n          \"height\": 5512\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 3795,\n          \"url\": \"string\",\n          \"width\": 555,\n          \"height\": 2542\n        }\n      ],\n      \"created_at\": 1559\n    },\n    {\n      \"id\": \"string\",\n      \"body\": \"string\",\n      \"attachments\": [\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 4366,\n          \"url\": \"string\",\n          \"width\": 3107,\n          \"height\": 8526\n        },\n        {\n          \"id\": \"string\",\n          \"filename\": \"string\",\n          \"extension\": \"string\",\n          \"media_type\": \"string\",\n          \"sub_type\": \"string\",\n          \"size\": 9354,\n          \"url\": \"string\",\n          \"width\": 3034,\n          \"height\": 5433\n        }\n      ],\n      \"created_at\": 1287\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8594af2-7d80-46e1-8a26-a03b50709749",
+          "name": "Merge Conversations",
+          "request": {
+            "name": "Merge Conversations",
+            "description": {
+              "content": "Merge a conversation into a target conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "conversations",
+                ":id",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target\": \"<string>\",\n  \"subject\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "802412c9-71a7-4c77-8375-7c230739160d",
+              "name": "Merged conversation object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target\": \"<string>\",\n  \"subject\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversations\": {\n    \"id\": \"string\",\n    \"subject\": \"string\",\n    \"color\": \"string\",\n    \"organization\": \"string\",\n    \"team\": \"string\",\n    \"assignees\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shared_labels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"message_count\": 505,\n    \"last_activity_at\": 7350,\n    \"assigned\": true,\n    \"unassigned\": false,\n    \"closed\": true,\n    \"archived\": false,\n    \"flagged\": true,\n    \"snoozed\": false,\n    \"trashed\": false,\n    \"junked\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7627b9f8-ec59-423e-b0bf-b2a4f68acc9b",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conversations",
+                    ":id",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Conversation ID (supports comma-separated IDs for bulk operations)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target\": \"<string>\",\n  \"subject\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public.missiveapp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9f94fc15-17a2-4087-91fc-c435b13fda25",
+    "name": "Missive REST Analytics Conversations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.\n\nContact Support:\n Name: Missive Support",
+      "type": "text/plain"
+    }
+  }
+}

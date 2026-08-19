@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Missive REST Analytics Contact Groups API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Contact Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/contact_groups",
+            "params": [
+              {
+                "name": "contact_book",
+                "value": "",
+                "type": "query",
+                "description": "ID of the contact book"
+              },
+              {
+                "name": "kind",
+                "value": "",
+                "type": "query",
+                "description": "Type of group to list"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (default 50, max 200)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List contact groups or organizations within a contact book."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

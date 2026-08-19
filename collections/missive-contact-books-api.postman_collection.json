@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "ecf2fe1b-67d6-452e-b57c-8a3943e6805f",
+      "name": "Contact Books",
+      "description": {
+        "content": "List available contact books",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1d917af-ca11-4362-8c6d-c1802218f263",
+          "name": "List Contact Books",
+          "request": {
+            "name": "List Contact Books",
+            "description": {
+              "content": "List contact books the authenticated user has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contact_books"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of results (default 50, max 200)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1439bb1-b5e6-4e28-9696-5c7df00cfaae",
+              "name": "Array of contact book objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contact_books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contact_books\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"shared\": true\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"shared\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public.missiveapp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c3a00191-94b0-4513-b7d7-3554463fcd04",
+    "name": "Missive REST Analytics Contact Books API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.\n\nContact Support:\n Name: Missive Support",
+      "type": "text/plain"
+    }
+  }
+}

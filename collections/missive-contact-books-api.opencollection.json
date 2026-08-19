@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Missive REST Analytics Contact Books API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact Books",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Contact Books",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/contact_books",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results (default 50, max 200)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List contact books the authenticated user has access to."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

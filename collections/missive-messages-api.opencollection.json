@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Missive REST Analytics Messages API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public.missiveapp.com/v1/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an incoming message in a custom channel. Used to ingest messages from external communication sources into Missive."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

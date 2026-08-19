@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Missive REST Analytics Drafts API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drafts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public.missiveapp.com/v1/drafts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft message. Supports email, SMS, and WhatsApp channels. Set send=true to send immediately. Supports conversation threading, assignees, shared labels, and auto-followup."
+        },
+        {
+          "info": {
+            "name": "Delete Draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://public.missiveapp.com/v1/drafts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Draft message ID"
+              }
+            ]
+          },
+          "docs": "Delete a draft from a conversation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,331 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Missive REST Analytics Conversations API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/conversations",
+            "params": [
+              {
+                "name": "inbox",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "assigned",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "closed",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "snoozed",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "flagged",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "trashed",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "junked",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "drafts",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "shared_label",
+                "value": "",
+                "type": "query",
+                "description": "Shared label ID to filter by"
+              },
+              {
+                "name": "team_inbox",
+                "value": "",
+                "type": "query",
+                "description": "Team ID to filter team inbox"
+              },
+              {
+                "name": "team_closed",
+                "value": "",
+                "type": "query",
+                "description": "Team ID to filter closed team conversations"
+              },
+              {
+                "name": "team_all",
+                "value": "",
+                "type": "query",
+                "description": "Team ID for all team conversations"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of conversations (default 25, max 50)"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp for cursor-based pagination"
+              },
+              {
+                "name": "organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by organization ID"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filter by email address"
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "Filter by email domain"
+              },
+              {
+                "name": "contact_organization",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact organization ID"
+              }
+            ]
+          },
+          "docs": "List conversations. At least one mailbox filter must be provided. Conversations are ordered newest to oldest by last activity. Pagination uses the last_activity_at timestamp of the last item as the until parameter."
+        },
+        {
+          "info": {
+            "name": "Get Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/conversations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Conversation ID (supports comma-separated IDs for bulk operations)"
+              }
+            ]
+          },
+          "docs": "Fetch a specific conversation using its ID."
+        },
+        {
+          "info": {
+            "name": "Update Conversation(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://public.missiveapp.com/v1/conversations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Conversation ID (supports comma-separated IDs for bulk operations)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update one or more conversations. The id parameter supports comma-separated IDs for bulk operations."
+        },
+        {
+          "info": {
+            "name": "List Conversation Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/conversations/:id/messages",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Conversation ID (supports comma-separated IDs for bulk operations)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages (default 10, max 10)"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp for cursor pagination"
+              }
+            ]
+          },
+          "docs": "List messages within a conversation."
+        },
+        {
+          "info": {
+            "name": "List Conversation Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/conversations/:id/comments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Conversation ID (supports comma-separated IDs for bulk operations)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of comments (default 10, max 10)"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp for cursor pagination"
+              }
+            ]
+          },
+          "docs": "List comments (internal notes) within a conversation."
+        },
+        {
+          "info": {
+            "name": "List Conversation Drafts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/conversations/:id/drafts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Conversation ID (supports comma-separated IDs for bulk operations)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of drafts (default 10, max 10)"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp for cursor pagination"
+              }
+            ]
+          },
+          "docs": "List drafts within a conversation."
+        },
+        {
+          "info": {
+            "name": "List Conversation Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/conversations/:id/posts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Conversation ID (supports comma-separated IDs for bulk operations)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of posts (default 10, max 10)"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp for cursor pagination"
+              }
+            ]
+          },
+          "docs": "List posts within a conversation."
+        },
+        {
+          "info": {
+            "name": "Merge Conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public.missiveapp.com/v1/conversations/:id/merge",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Conversation ID (supports comma-separated IDs for bulk operations)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merge a conversation into a target conversation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

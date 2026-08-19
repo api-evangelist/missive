@@ -1,0 +1,325 @@
+{
+  "item": [
+    {
+      "id": "13f1c909-9ecf-4c8f-bcae-2689212a8840",
+      "name": "Drafts",
+      "description": {
+        "content": "Create and delete draft messages",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7fd4092b-3042-4be9-893e-1b910b5439cd",
+          "name": "Create Draft",
+          "request": {
+            "name": "Create Draft",
+            "description": {
+              "content": "Create a draft message. Supports email, SMS, and WhatsApp channels. Set send=true to send immediately. Supports conversation threading, assignees, shared labels, and auto-followup.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drafts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"from_field\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"phone_number\": \"<string>\",\n    \"id\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"to_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"cc_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"bcc_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"base64_data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"base64_data\": \"<string>\"\n    }\n  ],\n  \"conversation\": \"<string>\",\n  \"references\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"team\": \"<string>\",\n  \"force_team\": \"<boolean>\",\n  \"organization\": \"<string>\",\n  \"add_users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"send\": \"<boolean>\",\n  \"send_at\": \"<long>\",\n  \"auto_followup\": \"<boolean>\",\n  \"external_response_id\": \"<string>\",\n  \"external_response_variables\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46c7cd3d-6551-4ebf-af88-a31aebff895f",
+              "name": "Draft created (may have empty body if sent immediately)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"from_field\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"phone_number\": \"<string>\",\n    \"id\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"to_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"cc_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"bcc_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"base64_data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"base64_data\": \"<string>\"\n    }\n  ],\n  \"conversation\": \"<string>\",\n  \"references\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"team\": \"<string>\",\n  \"force_team\": \"<boolean>\",\n  \"organization\": \"<string>\",\n  \"add_users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"send\": \"<boolean>\",\n  \"send_at\": \"<long>\",\n  \"auto_followup\": \"<boolean>\",\n  \"external_response_id\": \"<string>\",\n  \"external_response_variables\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"drafts\": {\n    \"id\": \"string\",\n    \"subject\": \"string\",\n    \"preview\": \"string\",\n    \"body\": \"string\",\n    \"type\": \"string\",\n    \"from_field\": {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    \"to_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"id\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"id\": \"<string>\",\n        \"username\": \"<string>\"\n      }\n    ],\n    \"cc_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"id\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"id\": \"<string>\",\n        \"username\": \"<string>\"\n      }\n    ],\n    \"bcc_fields\": [\n      {\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"id\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"phone_number\": \"<string>\",\n        \"id\": \"<string>\",\n        \"username\": \"<string>\"\n      }\n    ],\n    \"references\": [\n      \"string\",\n      \"string\"\n    ],\n    \"in_reply_to\": [\n      \"string\",\n      \"string\"\n    ],\n    \"attachments\": [\n      {\n        \"id\": \"string\",\n        \"filename\": \"string\",\n        \"extension\": \"string\",\n        \"media_type\": \"string\",\n        \"sub_type\": \"string\",\n        \"size\": 5895,\n        \"url\": \"string\",\n        \"width\": 2649,\n        \"height\": 4073\n      },\n      {\n        \"id\": \"string\",\n        \"filename\": \"string\",\n        \"extension\": \"string\",\n        \"media_type\": \"string\",\n        \"sub_type\": \"string\",\n        \"size\": 2879,\n        \"url\": \"string\",\n        \"width\": 5468,\n        \"height\": 3272\n      }\n    ],\n    \"created_at\": 4898,\n    \"updated_at\": 190\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c23a833-8fdf-4873-9226-b9fc7cbe5149",
+              "name": "Bad request — invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"from_field\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"phone_number\": \"<string>\",\n    \"id\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"to_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"cc_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"bcc_fields\": [\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"phone_number\": \"<string>\",\n      \"id\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"base64_data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"base64_data\": \"<string>\"\n    }\n  ],\n  \"conversation\": \"<string>\",\n  \"references\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"team\": \"<string>\",\n  \"force_team\": \"<boolean>\",\n  \"organization\": \"<string>\",\n  \"add_users\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_assignees\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"add_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"remove_shared_labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"send\": \"<boolean>\",\n  \"send_at\": \"<long>\",\n  \"auto_followup\": \"<boolean>\",\n  \"external_response_id\": \"<string>\",\n  \"external_response_variables\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c66a5ab3-95b6-466b-ad82-813fa98f8e8e",
+          "name": "Delete Draft",
+          "request": {
+            "name": "Delete Draft",
+            "description": {
+              "content": "Delete a draft from a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drafts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Draft message ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0808d025-31b6-41a0-b369-b6d0b6ef1d36",
+              "name": "Draft deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Draft message ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46592174-2891-4a5a-b983-d77d38142a13",
+              "name": "Draft not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drafts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Draft message ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public.missiveapp.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9cab1c92-8afd-47dc-a264-c09b6c5ed177",
+    "name": "Missive REST Analytics Drafts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.\n\nContact Support:\n Name: Missive Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Missive REST Analytics Contacts API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/contacts",
+            "params": [
+              {
+                "name": "contact_book",
+                "value": "",
+                "type": "query",
+                "description": "ID of the contact book to list contacts from"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of contacts to return (max 200)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified_since",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp; return contacts modified after this time"
+              },
+              {
+                "name": "include_deleted",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              }
+            ]
+          },
+          "docs": "List contacts in a contact book."
+        },
+        {
+          "info": {
+            "name": "Create Contact(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public.missiveapp.com/v1/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more contacts in a contact book."
+        },
+        {
+          "info": {
+            "name": "Get Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public.missiveapp.com/v1/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID (supports comma-separated IDs for bulk operations)"
+              }
+            ]
+          },
+          "docs": "Fetch a specific contact using the contact ID."
+        },
+        {
+          "info": {
+            "name": "Update Contact(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://public.missiveapp.com/v1/contacts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID (supports comma-separated IDs for bulk operations)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update one or more contacts. Pass only attributes needing updates. The id parameter supports comma-separated IDs for bulk updates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
