@@ -36,6 +36,16 @@ tags:
   - Messaging
   - Conversations
   - Contacts
+  - Webhook
+  - Automation
+  - REST API
+tags_raw:
+  - Team Inbox
+  - Collaboration
+  - Email
+  - Messaging
+  - Conversations
+  - Contacts
   - Webhooks
   - Automation
   - REST API
@@ -118,6 +128,8 @@ apis:
   humanURL: https://missiveapp.com/docs/developers/rest-api
   baseURL: https://public.missiveapp.com/v1/
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
