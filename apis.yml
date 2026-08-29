@@ -149,6 +149,9 @@ apis:
   - type: Documentation
     url: https://missiveapp.com/docs/developers/rest-api
 common:
+  - type: CapabilityMap
+    url: capabilities/missive-capability-edges.yml
+    name: Missive Business Capability Map
   - type: AgenticAccess
     url: agentic-access/missive-agentic-access.yml
   - type: TrustCenter
