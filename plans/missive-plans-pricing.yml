@@ -10,6 +10,11 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: per-seat
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+  managed_tier: Starter
 published: true
 note: Prices shown billed yearly (20% off); monthly toggle exists but amounts not shown separately. 30-day
   free trial of Productive plan.
