@@ -1,39 +1,44 @@
-name: Missive API Rate Limits
-description: >-
-  The Missive REST API enforces rate limits to ensure fair usage and platform
-  stability. Limits apply per API token. When a rate limit is exceeded, the API
-  returns HTTP 429 Too Many Requests. Rate limit information is documented at
-  https://missiveapp.com/help/api-documentation/rate-limits.
-specificationVersion: "0.1"
-url: https://missiveapp.com/help/api-documentation/rate-limits
-rateLimits:
-  - name: Concurrent Requests Limit
-    description: >-
-      Maximum number of simultaneous API requests allowed at any given time per
-      API token. Exceeding this limit returns HTTP 429 Too Many Requests.
-    limit: 5
-    unit: concurrent requests
-    window: simultaneous
-    scope: per token
-
-  - name: Requests Per Minute
-    description: >-
-      Maximum number of API requests allowed within a rolling 60-second window
-      per API token. Exceeding this limit returns HTTP 429 Too Many Requests.
-    limit: 300
-    unit: requests
-    window: 60 seconds
-    scope: per token
-
-  - name: Requests Per 15 Minutes
-    description: >-
-      Maximum number of API requests allowed within a rolling 15-minute window
-      per API token. Exceeding this limit returns HTTP 429 Too Many Requests.
-    limit: 900
-    unit: requests
-    window: 900 seconds
-    scope: per token
-
-errorResponses:
-  - statusCode: 429
-    description: Too Many Requests — returned when any rate limit is exceeded
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://missiveapp.com/docs/developers/rest-api/rate-limits
+sources:
+- https://missiveapp.com/docs/developers/rest-api/rate-limits
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: true
+note: Limits stated globally for the Missive REST API without explicit scope.
+limit_count: 5
+limits:
+- name: Concurrent requests
+  limit_text: Maximum of 5 concurrent requests at any given time
+  limit: 5
+  scope: unclear
+- name: Per minute
+  limit_text: 300 requests per minute (equivalent to 5 requests per second)
+  limit: 300
+  window: minute
+  scope: unclear
+- name: Per 15 minutes
+  limit_text: 900 requests per 15 minutes (equivalent to 1 request per second)
+  limit: 900
+  scope: unclear
+- name: Continuous querying guidance
+  limit_text: Send at most 1 request per second.
+  limit: 1
+  window: second
+  scope: unclear
+- name: Burst guidance
+  limit_text: Send at most 5 requests per second.
+  limit: 5
+  window: second
+  scope: unclear
+  kind: burst
+headers:
+- Retry-After
+- X-RateLimit-Limit
+- X-RateLimit-Remaining
+- X-RateLimit-Reset
+exceeded_status: 429
