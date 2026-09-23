@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Missive REST Analytics API
   description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
@@ -57,14 +57,6 @@ paths:
         '404':
           description: Report not found or expired
 components:
-  parameters:
-    reportId:
-      name: id
-      in: path
-      required: true
-      description: Analytics report ID
-      schema:
-        type: string
   schemas:
     CreateAnalyticsReportRequest:
       type: object
@@ -112,12 +104,6 @@ components:
           items:
             type: string
           description: Filter by shared label IDs
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
     AnalyticsReport:
       type: object
       properties:
@@ -125,6 +111,12 @@ components:
           type: object
           description: Report data object
           additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
     AnalyticsReportCreated:
       type: object
       properties:
@@ -134,6 +126,14 @@ components:
             id:
               type: string
               description: Report ID for polling
+  parameters:
+    reportId:
+      name: id
+      in: path
+      required: true
+      description: Analytics report ID
+      schema:
+        type: string
   responses:
     BadRequest:
       description: Bad request — invalid parameters

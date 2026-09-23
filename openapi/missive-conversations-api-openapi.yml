@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Missive REST Analytics Conversations API
+  title: Missive REST Conversations API
   description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
   version: '1'
   contact:
@@ -347,33 +347,13 @@ components:
           type: boolean
         junked:
           type: boolean
-    MessageField:
+    DraftsResponse:
       type: object
       properties:
-        name:
-          type: string
-        address:
-          type: string
-        phone_number:
-          type: string
-        id:
-          type: string
-        username:
-          type: string
-    MessagesResponse:
-      type: object
-      properties:
-        messages:
+        drafts:
           type: array
           items:
             $ref: '#/components/schemas/Message'
-    ConversationsResponse:
-      type: object
-      properties:
-        conversations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Conversation'
     MergeConversationRequest:
       type: object
       required:
@@ -385,6 +365,27 @@ components:
         subject:
           type: string
           description: Subject for the merged conversation
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
     CommentsResponse:
       type: object
       properties:
@@ -392,17 +393,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Comment'
-    Error:
+    PostsResponse:
       type: object
       properties:
-        error:
-          type: string
-          description: Error message
-    ConversationResponse:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+    ConversationsResponse:
       type: object
       properties:
         conversations:
-          $ref: '#/components/schemas/Conversation'
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
+    MessagesResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
     Message:
       type: object
       properties:
@@ -448,27 +459,55 @@ components:
         updated_at:
           type: integer
           format: int64
-    Attachment:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    Comment:
       type: object
       properties:
         id:
           type: string
-        filename:
+        body:
           type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
+        author:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        mentions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
           type: integer
-        url:
+          format: int64
+    MessageField:
+      type: object
+      properties:
+        name:
           type: string
-        width:
-          type: integer
-        height:
-          type: integer
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
     UpdateConversationRequest:
       type: object
       properties:
@@ -509,13 +548,11 @@ components:
           type: boolean
         reopen:
           type: boolean
-    PostsResponse:
+    ConversationResponse:
       type: object
       properties:
-        posts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Post'
+        conversations:
+          $ref: '#/components/schemas/Conversation'
     Post:
       type: object
       properties:
@@ -530,50 +567,6 @@ components:
         created_at:
           type: integer
           format: int64
-    Comment:
-      type: object
-      properties:
-        id:
-          type: string
-        body:
-          type: string
-        author:
-          type: object
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-        mentions:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-        created_at:
-          type: integer
-          format: int64
-    DraftsResponse:
-      type: object
-      properties:
-        drafts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-  responses:
-    BadRequest:
-      description: Bad request — invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
     conversationId:
       name: id
@@ -582,6 +575,13 @@ components:
       description: Conversation ID (supports comma-separated IDs for bulk operations)
       schema:
         type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

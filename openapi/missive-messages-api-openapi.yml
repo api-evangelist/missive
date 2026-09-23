@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Missive REST Analytics Messages API
+  title: Missive REST Messages API
   description: The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens) generated in Missive preferences. The API requires a Productive plan or higher to generate API tokens. Responses are JSON-formatted with HTTP 200 or 201 success codes.
   version: '1'
   contact:
@@ -40,6 +40,38 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    MessageResponse:
+      type: object
+      properties:
+        messages:
+          $ref: '#/components/schemas/Message'
     MessageField:
       type: object
       properties:
@@ -53,17 +85,39 @@ components:
           type: string
         username:
           type: string
-    Error:
+    CreateMessageRequest:
       type: object
+      required:
+      - account
+      - from_field
+      - to_fields
+      - body
       properties:
-        error:
+        account:
           type: string
-          description: Error message
-    MessageResponse:
-      type: object
-      properties:
-        messages:
-          $ref: '#/components/schemas/Message'
+          description: Custom channel account ID
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        body:
+          type: string
+        subject:
+          type: string
+        external_id:
+          type: string
+          description: External message identifier for deduplication
+        attachments:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              base64_data:
+                type: string
     Message:
       type: object
       properties:
@@ -109,60 +163,6 @@ components:
         updated_at:
           type: integer
           format: int64
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-        filename:
-          type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-    CreateMessageRequest:
-      type: object
-      required:
-      - account
-      - from_field
-      - to_fields
-      - body
-      properties:
-        account:
-          type: string
-          description: Custom channel account ID
-        from_field:
-          $ref: '#/components/schemas/MessageField'
-        to_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageField'
-        body:
-          type: string
-        subject:
-          type: string
-        external_id:
-          type: string
-          description: External message identifier for deduplication
-        attachments:
-          type: array
-          items:
-            type: object
-            properties:
-              filename:
-                type: string
-              base64_data:
-                type: string
   responses:
     BadRequest:
       description: Bad request — invalid parameters

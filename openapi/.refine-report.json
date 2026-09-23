@@ -1,13 +1,7 @@
 {
   "provider": "missive",
   "sources": [
-    "missive-analytics-api-openapi.yml",
-    "missive-contact-books-api-openapi.yml",
-    "missive-contact-groups-api-openapi.yml",
-    "missive-contacts-api-openapi.yml",
-    "missive-conversations-api-openapi.yml",
-    "missive-drafts-api-openapi.yml",
-    "missive-messages-api-openapi.yml"
+    "_original/missive-rest-api-openapi.yml"
   ],
   "outputs": [
     "missive-analytics-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "missive-rest-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "missive-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "missive-contact-books-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "missive-contact-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "missive-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "missive-conversations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "missive-drafts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "missive-messages-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
