@@ -305,115 +305,6 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
-    Conversation:
-      type: object
-      properties:
-        id:
-          type: string
-        subject:
-          type: string
-        color:
-          type: string
-        organization:
-          type: string
-        team:
-          type: string
-        assignees:
-          type: array
-          items:
-            type: string
-        shared_labels:
-          type: array
-          items:
-            type: string
-        message_count:
-          type: integer
-        last_activity_at:
-          type: integer
-          format: int64
-        assigned:
-          type: boolean
-        unassigned:
-          type: boolean
-        closed:
-          type: boolean
-        archived:
-          type: boolean
-        flagged:
-          type: boolean
-        snoozed:
-          type: boolean
-        trashed:
-          type: boolean
-        junked:
-          type: boolean
-    DraftsResponse:
-      type: object
-      properties:
-        drafts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-    MergeConversationRequest:
-      type: object
-      required:
-      - target
-      properties:
-        target:
-          type: string
-          description: Destination conversation ID
-        subject:
-          type: string
-          description: Subject for the merged conversation
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-        filename:
-          type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-    CommentsResponse:
-      type: object
-      properties:
-        comments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comment'
-    PostsResponse:
-      type: object
-      properties:
-        posts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Post'
-    ConversationsResponse:
-      type: object
-      properties:
-        conversations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Conversation'
-    MessagesResponse:
-      type: object
-      properties:
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
     Message:
       type: object
       properties:
@@ -459,12 +350,27 @@ components:
         updated_at:
           type: integer
           format: int64
-    Error:
+    Attachment:
       type: object
       properties:
-        error:
+        id:
           type: string
-          description: Error message
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
     Comment:
       type: object
       properties:
@@ -495,6 +401,24 @@ components:
         created_at:
           type: integer
           format: int64
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    DraftsResponse:
+      type: object
+      properties:
+        drafts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    ConversationResponse:
+      type: object
+      properties:
+        conversations:
+          $ref: '#/components/schemas/Conversation'
     MessageField:
       type: object
       properties:
@@ -508,6 +432,13 @@ components:
           type: string
         username:
           type: string
+    PostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
     UpdateConversationRequest:
       type: object
       properties:
@@ -548,11 +479,6 @@ components:
           type: boolean
         reopen:
           type: boolean
-    ConversationResponse:
-      type: object
-      properties:
-        conversations:
-          $ref: '#/components/schemas/Conversation'
     Post:
       type: object
       properties:
@@ -567,6 +493,80 @@ components:
         created_at:
           type: integer
           format: int64
+    ConversationsResponse:
+      type: object
+      properties:
+        conversations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
+    MergeConversationRequest:
+      type: object
+      required:
+      - target
+      properties:
+        target:
+          type: string
+          description: Destination conversation ID
+        subject:
+          type: string
+          description: Subject for the merged conversation
+    CommentsResponse:
+      type: object
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+    MessagesResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        color:
+          type: string
+        organization:
+          type: string
+        team:
+          type: string
+        assignees:
+          type: array
+          items:
+            type: string
+        shared_labels:
+          type: array
+          items:
+            type: string
+        message_count:
+          type: integer
+        last_activity_at:
+          type: integer
+          format: int64
+        assigned:
+          type: boolean
+        unassigned:
+          type: boolean
+        closed:
+          type: boolean
+        archived:
+          type: boolean
+        flagged:
+          type: boolean
+        snoozed:
+          type: boolean
+        trashed:
+          type: boolean
+        junked:
+          type: boolean
   parameters:
     conversationId:
       name: id
