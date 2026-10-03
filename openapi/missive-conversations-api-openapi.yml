@@ -305,6 +305,11 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
+    ConversationResponse:
+      type: object
+      properties:
+        conversations:
+          $ref: '#/components/schemas/Conversation'
     Message:
       type: object
       properties:
@@ -350,27 +355,17 @@ components:
         updated_at:
           type: integer
           format: int64
-    Attachment:
+    MergeConversationRequest:
       type: object
+      required:
+      - target
       properties:
-        id:
+        target:
           type: string
-        filename:
+          description: Destination conversation ID
+        subject:
           type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
+          description: Subject for the merged conversation
     Comment:
       type: object
       properties:
@@ -401,44 +396,6 @@ components:
         created_at:
           type: integer
           format: int64
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    DraftsResponse:
-      type: object
-      properties:
-        drafts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-    ConversationResponse:
-      type: object
-      properties:
-        conversations:
-          $ref: '#/components/schemas/Conversation'
-    MessageField:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        phone_number:
-          type: string
-        id:
-          type: string
-        username:
-          type: string
-    PostsResponse:
-      type: object
-      properties:
-        posts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Post'
     UpdateConversationRequest:
       type: object
       properties:
@@ -479,20 +436,12 @@ components:
           type: boolean
         reopen:
           type: boolean
-    Post:
+    Error:
       type: object
       properties:
-        id:
+        error:
           type: string
-        body:
-          type: string
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-        created_at:
-          type: integer
-          format: int64
+          description: Error message
     ConversationsResponse:
       type: object
       properties:
@@ -500,17 +449,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Conversation'
-    MergeConversationRequest:
-      type: object
-      required:
-      - target
-      properties:
-        target:
-          type: string
-          description: Destination conversation ID
-        subject:
-          type: string
-          description: Subject for the merged conversation
     CommentsResponse:
       type: object
       properties:
@@ -518,10 +456,58 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Comment'
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
     MessagesResponse:
       type: object
       properties:
         messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    MessageField:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+    PostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+    DraftsResponse:
+      type: object
+      properties:
+        drafts:
           type: array
           items:
             $ref: '#/components/schemas/Message'
@@ -567,6 +553,20 @@ components:
           type: boolean
         junked:
           type: boolean
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+        body:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
   parameters:
     conversationId:
       name: id

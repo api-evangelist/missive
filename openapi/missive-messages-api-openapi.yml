@@ -40,6 +40,11 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
+    MessageResponse:
+      type: object
+      properties:
+        messages:
+          $ref: '#/components/schemas/Message'
     Message:
       type: object
       properties:
@@ -85,27 +90,6 @@ components:
         updated_at:
           type: integer
           format: int64
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-        filename:
-          type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
     CreateMessageRequest:
       type: object
       required:
@@ -145,6 +129,27 @@ components:
         error:
           type: string
           description: Error message
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
     MessageField:
       type: object
       properties:
@@ -158,11 +163,6 @@ components:
           type: string
         username:
           type: string
-    MessageResponse:
-      type: object
-      properties:
-        messages:
-          $ref: '#/components/schemas/Message'
   responses:
     BadRequest:
       description: Bad request — invalid parameters

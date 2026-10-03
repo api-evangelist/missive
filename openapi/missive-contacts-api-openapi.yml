@@ -138,6 +138,13 @@ paths:
           description: Contact not found
 components:
   schemas:
+    ContactsResponse:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
     UpdateContactRequest:
       type: object
       properties:
@@ -157,40 +164,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContactMembership'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    ContactResponse:
-      type: object
-      properties:
-        contacts:
-          $ref: '#/components/schemas/Contact'
-    ContactsResponse:
-      type: object
-      properties:
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-    ContactMembership:
-      type: object
-      required:
-      - group
-      properties:
-        group:
-          type: string
-          description: Group or organization ID
-        title:
-          type: string
-        location:
-          type: string
-        department:
-          type: string
-        description:
-          type: string
     CreateContactRequest:
       type: object
       required:
@@ -215,6 +188,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContactMembership'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    ContactInfo:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - email
+          - twitter
+          - phone_number
+          - facebook
+          - physical_address
+          - url
+          - custom
+        value:
+          type: string
+        label:
+          type: string
+        custom_label:
+          type: string
     Contact:
       type: object
       properties:
@@ -242,24 +240,26 @@ components:
         updated_at:
           type: integer
           format: int64
-    ContactInfo:
+    ContactResponse:
       type: object
       properties:
-        kind:
+        contacts:
+          $ref: '#/components/schemas/Contact'
+    ContactMembership:
+      type: object
+      required:
+      - group
+      properties:
+        group:
           type: string
-          enum:
-          - email
-          - twitter
-          - phone_number
-          - facebook
-          - physical_address
-          - url
-          - custom
-        value:
+          description: Group or organization ID
+        title:
           type: string
-        label:
+        location:
           type: string
-        custom_label:
+        department:
+          type: string
+        description:
           type: string
   parameters:
     contactId:

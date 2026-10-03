@@ -64,6 +64,13 @@ components:
         error:
           type: string
           description: Error message
+    AnalyticsReport:
+      type: object
+      properties:
+        reports:
+          type: object
+          description: Report data object
+          additionalProperties: true
     CreateAnalyticsReportRequest:
       type: object
       required:
@@ -110,13 +117,6 @@ components:
           items:
             type: string
           description: Filter by shared label IDs
-    AnalyticsReport:
-      type: object
-      properties:
-        reports:
-          type: object
-          description: Report data object
-          additionalProperties: true
     AnalyticsReportCreated:
       type: object
       properties:

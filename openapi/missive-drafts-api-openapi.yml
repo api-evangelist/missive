@@ -99,6 +99,12 @@ components:
         updated_at:
           type: integer
           format: int64
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
     Attachment:
       type: object
       properties:
@@ -203,17 +209,6 @@ components:
           description: WhatsApp template variable substitutions
           additionalProperties:
             type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    DraftResponse:
-      type: object
-      properties:
-        drafts:
-          $ref: '#/components/schemas/Message'
     MessageField:
       type: object
       properties:
@@ -227,13 +222,11 @@ components:
           type: string
         username:
           type: string
-  responses:
-    BadRequest:
-      description: Bad request — invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    DraftResponse:
+      type: object
+      properties:
+        drafts:
+          $ref: '#/components/schemas/Message'
   parameters:
     draftId:
       name: id
@@ -242,6 +235,13 @@ components:
       description: Draft message ID
       schema:
         type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
