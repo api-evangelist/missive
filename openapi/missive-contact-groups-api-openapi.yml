@@ -59,13 +59,6 @@ paths:
                 $ref: '#/components/schemas/ContactGroupsResponse'
 components:
   schemas:
-    ContactGroupsResponse:
-      type: object
-      properties:
-        contact_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactGroup'
     ContactGroup:
       type: object
       properties:
@@ -78,6 +71,13 @@ components:
           enum:
           - group
           - organization
+    ContactGroupsResponse:
+      type: object
+      properties:
+        contact_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroup'
   securitySchemes:
     bearerAuth:
       type: http

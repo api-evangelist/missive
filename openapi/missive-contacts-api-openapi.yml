@@ -138,81 +138,6 @@ paths:
           description: Contact not found
 components:
   schemas:
-    ContactsResponse:
-      type: object
-      properties:
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-    UpdateContactRequest:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        starred:
-          type: boolean
-        notes:
-          type: string
-        infos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactInfo'
-        memberships:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactMembership'
-    CreateContactRequest:
-      type: object
-      required:
-      - contact_book
-      properties:
-        contact_book:
-          type: string
-          description: Contact book ID
-        first_name:
-          type: string
-        last_name:
-          type: string
-        starred:
-          type: boolean
-        notes:
-          type: string
-        infos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactInfo'
-        memberships:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactMembership'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    ContactInfo:
-      type: object
-      properties:
-        kind:
-          type: string
-          enum:
-          - email
-          - twitter
-          - phone_number
-          - facebook
-          - physical_address
-          - url
-          - custom
-        value:
-          type: string
-        label:
-          type: string
-        custom_label:
-          type: string
     Contact:
       type: object
       properties:
@@ -240,11 +165,38 @@ components:
         updated_at:
           type: integer
           format: int64
-    ContactResponse:
+    UpdateContactRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+    ContactsResponse:
       type: object
       properties:
         contacts:
-          $ref: '#/components/schemas/Contact'
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
     ContactMembership:
       type: object
       required:
@@ -261,6 +213,61 @@ components:
           type: string
         description:
           type: string
+    ContactResponse:
+      type: object
+      properties:
+        contacts:
+          $ref: '#/components/schemas/Contact'
+    CreateContactRequest:
+      type: object
+      required:
+      - contact_book
+      properties:
+        contact_book:
+          type: string
+          description: Contact book ID
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+    ContactInfo:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - email
+          - twitter
+          - phone_number
+          - facebook
+          - physical_address
+          - url
+          - custom
+        value:
+          type: string
+        label:
+          type: string
+        custom_label:
+          type: string
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     contactId:
       name: id
@@ -269,13 +276,6 @@ components:
       description: Contact ID (supports comma-separated IDs for bulk operations)
       schema:
         type: string
-  responses:
-    BadRequest:
-      description: Bad request — invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

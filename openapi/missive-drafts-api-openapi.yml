@@ -54,78 +54,6 @@ paths:
           description: Draft not found
 components:
   schemas:
-    Message:
-      type: object
-      properties:
-        id:
-          type: string
-        subject:
-          type: string
-        preview:
-          type: string
-        body:
-          type: string
-        type:
-          type: string
-        from_field:
-          $ref: '#/components/schemas/MessageField'
-        to_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageField'
-        cc_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageField'
-        bcc_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageField'
-        references:
-          type: array
-          items:
-            type: string
-        in_reply_to:
-          type: array
-          items:
-            type: string
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-        created_at:
-          type: integer
-          format: int64
-        updated_at:
-          type: integer
-          format: int64
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-        filename:
-          type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
     CreateDraftRequest:
       type: object
       properties:
@@ -209,6 +137,32 @@ components:
           description: WhatsApp template variable substitutions
           additionalProperties:
             type: string
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    DraftResponse:
+      type: object
+      properties:
+        drafts:
+          $ref: '#/components/schemas/Message'
     MessageField:
       type: object
       properties:
@@ -222,11 +176,64 @@ components:
           type: string
         username:
           type: string
-    DraftResponse:
+    Error:
       type: object
       properties:
-        drafts:
-          $ref: '#/components/schemas/Message'
+        error:
+          type: string
+          description: Error message
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        preview:
+          type: string
+        body:
+          type: string
+        type:
+          type: string
+        from_field:
+          $ref: '#/components/schemas/MessageField'
+        to_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        cc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        bcc_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageField'
+        references:
+          type: array
+          items:
+            type: string
+        in_reply_to:
+          type: array
+          items:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+  responses:
+    BadRequest:
+      description: Bad request — invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     draftId:
       name: id
@@ -235,13 +242,6 @@ components:
       description: Draft message ID
       schema:
         type: string
-  responses:
-    BadRequest:
-      description: Bad request — invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

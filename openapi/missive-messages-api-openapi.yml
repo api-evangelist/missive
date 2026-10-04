@@ -40,11 +40,46 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
-    MessageResponse:
+    Attachment:
       type: object
       properties:
-        messages:
-          $ref: '#/components/schemas/Message'
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    MessageField:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
     Message:
       type: object
       properties:
@@ -123,46 +158,11 @@ components:
                 type: string
               base64_data:
                 type: string
-    Error:
+    MessageResponse:
       type: object
       properties:
-        error:
-          type: string
-          description: Error message
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-        filename:
-          type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-    MessageField:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        phone_number:
-          type: string
-        id:
-          type: string
-        username:
-          type: string
+        messages:
+          $ref: '#/components/schemas/Message'
   responses:
     BadRequest:
       description: Bad request — invalid parameters

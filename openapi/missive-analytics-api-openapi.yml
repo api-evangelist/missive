@@ -57,20 +57,15 @@ paths:
         '404':
           description: Report not found or expired
 components:
+  parameters:
+    reportId:
+      name: id
+      in: path
+      required: true
+      description: Analytics report ID
+      schema:
+        type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    AnalyticsReport:
-      type: object
-      properties:
-        reports:
-          type: object
-          description: Report data object
-          additionalProperties: true
     CreateAnalyticsReportRequest:
       type: object
       required:
@@ -126,6 +121,19 @@ components:
             id:
               type: string
               description: Report ID for polling
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    AnalyticsReport:
+      type: object
+      properties:
+        reports:
+          type: object
+          description: Report data object
+          additionalProperties: true
   responses:
     BadRequest:
       description: Bad request — invalid parameters
@@ -133,14 +141,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    reportId:
-      name: id
-      in: path
-      required: true
-      description: Analytics report ID
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
