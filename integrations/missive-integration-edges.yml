@@ -1,0 +1,821 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/missive/integrations
+- https://n8n.io/integrations/missive/
+- https://composio.dev/toolkits/missive
+checked:
+- https://composio.dev/toolkits/missive
+- https://monid.ai/tools/missive
+- https://n8n.io/integrations/missive/
+- https://zapier.com/apps/missive/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: missive
+  url: https://zapier.com/apps/missive/integrations
+  external_url: https://missiveapp.com/
+  partner_tier: SILVER
+  triggers:
+  - key: comment
+    label: New Comment
+  - key: contactBookList
+    label: New Contact Book
+  - key: contactGroupList
+    label: New Contact Group
+  - key: contactList
+    label: New Contact
+  - key: incoming_message
+    label: New Message (Email, SMS, Etc.)
+  actions:
+  - key: contactCreate
+    label: Create Contact
+  - key: draft
+    label: Create Draft
+  - key: post
+    label: Create Post
+  - key: taskCreate
+    label: Create Task
+  - key: update_contact
+    label: Update Contact
+  - key: update_task
+    label: Update Task
+  searches:
+  - key: contactSearch
+    label: Find a Contact
+- marketplace: n8n
+  channel: open-source-node
+  app: missive
+  url: https://n8n.io/integrations/missive/
+  identity: title
+  pair_pages: 328
+  pairs:
+  - mist
+  - mistral-ai
+  - mixpanel
+  - mocean
+  - mondaycom
+  - mongodb
+  - monica-crm
+  - moonclerk
+  - moonmail
+  - morph
+  - mqtt
+  - msg91
+  - mux
+  - mx-toolbox
+  - my-askai
+  - myphoner
+  - mysql
+  - nanonets-ocr
+  - nasa
+  - ncscale
+  - netlify
+  - nextcloud
+  - nightfallai
+  - ninox
+  - nmkr
+  - nocodb
+  - notion
+  - nozbe-teams
+  - npm
+  - nuclia
+  - nusii-proposals
+  - nyckel
+  - nyota
+  - occasion
+  - ocrspace
+  - odoo
+  - offalerts
+  - okta
+  - omeda
+  - omniconvert
+  - omnimind
+  - on2air
+  - one-ai
+  - one-simple-api
+  - onfleet
+  - openai
+  - opencti
+  - openthesaurus
+  - openweathermap
+  - opn-formerly-omise
+  - oracle-database
+  - orbit
+  - order-desk
+  - ortto
+  - oura
+  - paddle
+  - pagerduty
+  - paperform
+  - papyrs
+  - parsehub
+  - parseprompt
+  - passcreator
+  - passslot
+  - patreon
+  - paymo
+  - paypal
+  - peekalink
+  - perplexity
+  - persio
+  - personal-ai
+  - phantombuster
+  - philips-hue
+  - phrase
+  - pinata
+  - pinboard
+  - pinterest
+  - pipedrive
+  - pipefy
+  - pirate-weather
+  - pitchly
+  - pivotal-tracker
+  - planview-leankit
+  - planyo-online-booking
+  - platformly
+  - plecto
+  - plivo
+  - postbin
+  - postgres
+  - posthog
+  - practitest
+  - predisai
+  - prodia
+  - product-hunt
+  - profitwell
+  - project-bubble-proprofs-project
+  - prompthub
+  - prospe-ai
+  - pushbullet
+  - pushcut
+  - pusher
+  - pushover
+  - qradar
+  - qualaroo
+  - qualys
+  - quentn
+  - questdb
+  - quick-base
+  - quickbooks-online
+  - quickchart
+  - quintadb
+  - rabbitmq
+  - radar
+  - raindrop
+  - rapid7-insightvm
+  - raven-tools
+  - rawg-video-games-database
+  - read-ai
+  - realphonevalidation
+  - recharge
+  - recorded-future
+  - redash
+  - reddit
+  - redis
+  - relevance-ai
+  - relink-url-shortener
+  - relysia
+  - replyio
+  - retable
+  - reverse-contact
+  - rewardful
+  - ritekit
+  - roboflow
+  - robolytix
+  - roboresponseai
+  - rocketchat
+  - rollbar
+  - rootly
+  - route4me
+  - rundeck
+  - s3
+  - sales-simplify
+  - salesforce
+  - salesmaa
+  - salesmate
+  - salesmsg
+  - salesrocks
+  - samsung-smartthings
+  - scrape-itcloud
+  - scrapeninja
+  - seamless-ai
+  - search-and-save
+  - seatable
+  - securityscorecard
+  - segment
+  - sekoia
+  - sellix
+  - sembly-ai
+  - sendgrid
+  - sendy
+  - sentryio
+  - servicenow
+  - sharly-ai
+  - shiphero
+  - shipstation
+  - shopify
+  - shortio
+  - shuffler
+  - sierra-interactive
+  - sifter
+  - signaturit
+  - signl4
+  - signrequest
+  - simpleem
+  - simplehash
+  - simplekpi
+  - simplelocalize
+  - simplero
+  - simpletexting
+  - sitecreatorio
+  - sitespeakai
+  - slack
+  - smaily
+  - smartreach
+  - smartsuite
+  - sms-it
+  - sms-magic
+  - sms77
+  - snapdocs
+  - snatchbot
+  - snipcart
+  - snowflake
+  - solve-data
+  - specter
+  - splunk
+  - spondyr
+  - spontit
+  - sportsdata
+  - spotify
+  - spydra
+  - sslmate-cert-spotter-api
+  - stackby
+  - stammerai
+  - starton
+  - statuscake
+  - storyblok
+  - strapi
+  - strava
+  - stripe
+  - studio-by-ai21-labs
+  - suitedash
+  - supabase
+  - supernormal
+  - superpowered
+  - supportivekoala
+  - survicate
+  - swagup
+  - switchboard
+  - syncly
+  - syncromsp
+  - synthesia
+  - taiga
+  - talentlms
+  - talknotes
+  - tapfiliate
+  - td-ameritrade
+  - teachable
+  - team-up
+  - teamdeck
+  - teamgate
+  - teknoir
+  - telegram
+  - testmonitor
+  - textcortex-ai
+  - textgain
+  - textkit
+  - textmagic
+  - thankster
+  - the-customer-factor
+  - the-leap
+  - thehive
+  - thehive-5
+  - thoughtfulgpt
+  - thrivecart
+  - tidb-cloud
+  - tierion
+  - tilda
+  - timescaledb
+  - timetonic
+  - tinyurl
+  - tisane-labs
+  - todoist
+  - token-metrics
+  - toket
+  - totango
+  - trackvia
+  - transifex
+  - travisci
+  - trellix-epo
+  - trello
+  - trengo
+  - trevorio
+  - turbohire
+  - tuskr
+  - tuulio
+  - twake
+  - twilio
+  - twist
+  - twitter
+  - unbounce
+  - unisender
+  - unleashed-software
+  - upkeep
+  - uplead
+  - uproc
+  - uptimerobot
+  - uptimetoolbox
+  - urlscanio
+  - uservoice
+  - venafi-tls-protect-cloud
+  - venafi-tls-protect-datacenter
+  - venly
+  - verifalia
+  - vero
+  - vimeo
+  - virustotal
+  - vivifyscrum
+  - voicit
+  - vonage
+  - vowel
+  - watchsignals
+  - waveline-extract
+  - webex-by-cisco
+  - webflow
+  - webscraperio
+  - wekan
+  - whal3s
+  - whatconverts
+  - whatsapp-business-cloud
+  - wise
+  - wizychat
+  - wonderchat
+  - wondercraft
+  - woocommerce
+  - woodpeckerco
+  - wordpress
+  - workast
+  - workboard
+  - woxo
+  - writesonic
+  - wubook-ratechecker
+  - xero
+  - xtractly
+  - ybug
+  - ycode
+  - yodiz
+  - yourls
+  - youtube
+  - zabbix
+  - zammad
+  - zendesk
+  - zenrows
+  - zoho-books
+  - zoho-crm
+  - zoho-desk
+  - zonka-feedback
+  - zoom
+  - zscaler-zia
+  - zulip
+- marketplace: composio
+  channel: agent-gateway
+  app: missive
+  url: https://composio.dev/toolkits/missive
+  identity: action-prefix
+  actions:
+  - key: MISSIVE_CREATE_ANALYTICS_REPORT
+  - key: MISSIVE_CREATE_CONTACTS
+  - key: MISSIVE_CREATE_DRAFT
+  - key: MISSIVE_CREATE_MESSAGE
+  - key: MISSIVE_CREATE_POST
+  - key: MISSIVE_CREATE_RESPONSE
+  - key: MISSIVE_CREATE_SHARED_LABEL
+  - key: MISSIVE_CREATE_TASK
+  - key: MISSIVE_CREATE_TEAM
+  - key: MISSIVE_CREATE_WEBHOOK
+  - key: MISSIVE_DELETE_DRAFT
+  - key: MISSIVE_DELETE_POST
+  - key: MISSIVE_DELETE_RESPONSES
+  - key: MISSIVE_DELETE_WEBHOOK
+  - key: MISSIVE_GET_ANALYTICS_REPORT
+  - key: MISSIVE_GET_CONTACT
+  - key: MISSIVE_GET_CONVERSATION
+  - key: MISSIVE_GET_CONVERSATION_MESSAGES
+  - key: MISSIVE_GET_MESSAGE
+  - key: MISSIVE_GET_RESPONSE
+  - key: MISSIVE_GET_TASK
+  - key: MISSIVE_LIST_CONTACTS
+  - key: MISSIVE_LIST_CONTACT_BOOKS
+  - key: MISSIVE_LIST_CONTACT_GROUPS
+  - key: MISSIVE_LIST_CONVERSATIONS
+  - key: MISSIVE_LIST_CONVERSATION_COMMENTS
+  - key: MISSIVE_LIST_CONVERSATION_DRAFTS
+  - key: MISSIVE_LIST_CONVERSATION_POSTS
+  - key: MISSIVE_LIST_MESSAGES
+  - key: MISSIVE_LIST_ORGANIZATIONS
+  - key: MISSIVE_LIST_RESPONSES
+  - key: MISSIVE_LIST_SHARED_LABELS
+  - key: MISSIVE_LIST_TASKS
+  - key: MISSIVE_LIST_TEAMS
+  - key: MISSIVE_LIST_USERS
+  - key: MISSIVE_MERGE_CONVERSATIONS
+  - key: MISSIVE_UPDATE_CONTACT
+  - key: MISSIVE_UPDATE_RESPONSE
+  - key: MISSIVE_UPDATE_SHARED_LABELS
+  - key: MISSIVE_UPDATE_TASK
+  - key: MISSIVE_UPDATE_TEAM
+edges:
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: Heyflow
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/heyflow
+  direction: third-party
+  category: Website & App Building
+  partner_url: https://heyflow.com/
+- partner_name: Pipedrive
+  partner: pipedrive
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/pipedrive
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://pipedrive.com/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Telegram
+  partner: telegram
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/telegram
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://telegram.org/
+- partner_name: Notion
+  partner: notion
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/notion
+  direction: third-party
+  category: Task Management
+  partner_url: https://www.notion.so/
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Seamless
+  partner: seamless-ai
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/seamless
+  direction: third-party
+  category: AI Sales Tools
+  partner_url: https://seamless.ai/customers/education/articles/zapier-connection-guide
+- partner_name: Precise Petcare
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/precise-petcare
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://www.precisepetcare.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Sniply
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/sniply
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://sniply.io/
+- partner_name: Trello
+  partner: trello
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/trello
+  direction: third-party
+  category: Project Management
+  partner_url: https://trello.com/
+- partner_name: Aircall
+  partner: aircall
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/aircall
+  direction: third-party
+  category: Developer Tools
+  partner_url: https://aircall.io/
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: TickTick
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/ticktick
+  direction: third-party
+  category: Task Management
+  partner_url: https://www.ticktick.com/
+- partner_name: Akiflow
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/akiflow
+  direction: third-party
+  category: Productivity
+  partner_url: https://akiflow.com/?Source=zapier
+- partner_name: Paperform
+  partner: paperform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/paperform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://paperform.co/?utm_medium=partners&utm_source=Zapier&utm_campaign=integration_partners&utm_content=integration_page
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: Google Docs
+  partner: google-docs
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/google-docs
+  direction: third-party
+  category: Documents
+  partner_url: http://google.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
+- partner_name: Google Business Profile
+  partner: google-business-profile
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/google-business-profile
+  direction: third-party
+  category: Google
+  partner_url: https://www.google.com/business/
+- partner_name: RingCentral
+  partner: ringcentral
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/ringcentral
+  direction: third-party
+  category: Phone & SMS
+  partner_url: http://www.ringcentral.com/
+- partner_name: Affinity
+  partner: affinity
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/affinity
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://zapier.com/affinity.co
+- partner_name: Google Contacts
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/google-contacts
+  direction: third-party
+  category: Contact Management
+  partner_url: https://www.google.com/contacts/
+- partner_name: Quo
+  partner: quo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/quo
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://quo.com/?utm_source=partnership&utm_medium=partner&utm_campaign=zapier
+- partner_name: Motion
+  partner: motion
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/motion
+  direction: third-party
+  category: Project Management
+  partner_url: https://usemotion.com/
+templates:
+- title: Send channel messages in Slack for new comments in Missive
+  url: https://zapier.com/apps/missive/integrations/slack/614708/send-channel-messages-in-slack-for-new-comments-in-missive
+  apps:
+  - missive
+  - slack
+- title: Add new Slack channel messages to Missive conversations
+  url: https://zapier.com/apps/missive/integrations/slack/614721/add-new-slack-channel-messages-to-missive-conversations
+  apps:
+  - slack
+  - missive
+- title: Add new Missive tasks to ClickUp
+  url: https://zapier.com/apps/clickup/integrations/missive/613021/add-new-missive-tasks-to-clickup
+  apps:
+  - missive
+  - clickup
+- title: Create new Google Tasks tasks from new Missive comments
+  url: https://zapier.com/apps/google-tasks/integrations/missive/255620779/create-new-google-tasks-tasks-from-new-missive-comments
+  apps:
+  - missive
+  - google-tasks
+- title: Create tasks in Akiflow from new comments in Missive
+  url: https://zapier.com/apps/akiflow/integrations/missive/1758466/create-tasks-in-akiflow-from-new-comments-in-missive
+  apps:
+  - missive
+  - akiflow
+- title: Add new Mailchimp subscribers to Missive as contacts
+  url: https://zapier.com/apps/mailchimp/integrations/missive/613535/add-new-mailchimp-subscribers-to-missive-as-contacts
+  apps:
+  - mailchimp
+  - missive
+- title: Create Airtable records for new Missive emails
+  url: https://zapier.com/apps/airtable/integrations/missive/613550/create-airtable-records-for-new-missive-emails
+  apps:
+  - missive
+  - airtable
+- title: Create deals in HubSpot with new keywords in Missive comments
+  url: https://zapier.com/apps/hubspot/integrations/missive/613571/create-deals-in-hubspot-with-new-keywords-in-missive-comments
+  apps:
+  - missive
+  - hubspot
+- title: Generate contacts in Missive from new Typeform entries
+  url: https://zapier.com/apps/missive/integrations/typeform/614866/generate-contacts-in-missive-from-new-typeform-entries
+  apps:
+  - typeform
+  - missive
+- title: Add new Missive comments to rows in Google Sheets
+  url: https://zapier.com/apps/google-sheets/integrations/missive/614875/add-new-missive-comments-to-rows-in-google-sheets
+  apps:
+  - missive
+  - google-sheets
+- title: Create Notion database items from new Missive comments
+  url: https://zapier.com/apps/missive/integrations/notion/614898/create-notion-database-items-from-new-missive-comments
+  apps:
+  - missive
+  - notion
+- title: Update Missive contacts for new Simplesat feedback
+  url: https://zapier.com/apps/missive/integrations/simplesat/843626/update-missive-contacts-for-new-simplesat-feedback
+  apps:
+  - simplesat
+  - missive
+template_total: 183
