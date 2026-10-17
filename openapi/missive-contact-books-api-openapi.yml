@@ -44,6 +44,13 @@ paths:
                 $ref: '#/components/schemas/ContactBooksResponse'
 components:
   schemas:
+    ContactBooksResponse:
+      type: object
+      properties:
+        contact_books:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactBook'
     ContactBook:
       type: object
       properties:
@@ -53,13 +60,6 @@ components:
           type: string
         shared:
           type: boolean
-    ContactBooksResponse:
-      type: object
-      properties:
-        contact_books:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactBook'
   securitySchemes:
     bearerAuth:
       type: http

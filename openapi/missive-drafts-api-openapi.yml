@@ -137,51 +137,6 @@ components:
           description: WhatsApp template variable substitutions
           additionalProperties:
             type: string
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-        filename:
-          type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-    DraftResponse:
-      type: object
-      properties:
-        drafts:
-          $ref: '#/components/schemas/Message'
-    MessageField:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        phone_number:
-          type: string
-        id:
-          type: string
-        username:
-          type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
     Message:
       type: object
       properties:
@@ -227,6 +182,51 @@ components:
         updated_at:
           type: integer
           format: int64
+    MessageField:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        phone_number:
+          type: string
+        id:
+          type: string
+        username:
+          type: string
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    DraftResponse:
+      type: object
+      properties:
+        drafts:
+          $ref: '#/components/schemas/Message'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
   responses:
     BadRequest:
       description: Bad request — invalid parameters

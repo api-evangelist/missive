@@ -305,87 +305,58 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
-    MergeConversationRequest:
+    UpdateConversationRequest:
       type: object
-      required:
-      - target
       properties:
-        target:
-          type: string
-          description: Destination conversation ID
         subject:
           type: string
-          description: Subject for the merged conversation
+        color:
+          type: string
+        organization:
+          type: string
+        team:
+          type: string
+        add_users:
+          type: array
+          items:
+            type: string
+        add_assignees:
+          type: array
+          items:
+            type: string
+        remove_assignees:
+          type: array
+          items:
+            type: string
+        add_shared_labels:
+          type: array
+          items:
+            type: string
+        remove_shared_labels:
+          type: array
+          items:
+            type: string
+        add_to_inbox:
+          type: boolean
+        add_to_team_inbox:
+          type: string
+          description: Team ID to add to that team's inbox
+        close:
+          type: boolean
+        reopen:
+          type: boolean
+    ConversationsResponse:
+      type: object
+      properties:
+        conversations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Conversation'
     ConversationResponse:
       type: object
       properties:
         conversations:
           $ref: '#/components/schemas/Conversation'
-    DraftsResponse:
-      type: object
-      properties:
-        drafts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-    Attachment:
-      type: object
-      properties:
-        id:
-          type: string
-        filename:
-          type: string
-        extension:
-          type: string
-        media_type:
-          type: string
-        sub_type:
-          type: string
-        size:
-          type: integer
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-    MessagesResponse:
-      type: object
-      properties:
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Message'
-    Comment:
-      type: object
-      properties:
-        id:
-          type: string
-        body:
-          type: string
-        author:
-          type: object
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-        mentions:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-        created_at:
-          type: integer
-          format: int64
     Message:
       type: object
       properties:
@@ -431,6 +402,13 @@ components:
         updated_at:
           type: integer
           format: int64
+    PostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
     MessageField:
       type: object
       properties:
@@ -444,19 +422,6 @@ components:
           type: string
         username:
           type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    ConversationsResponse:
-      type: object
-      properties:
-        conversations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Conversation'
     CommentsResponse:
       type: object
       properties:
@@ -464,46 +429,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Comment'
-    UpdateConversationRequest:
-      type: object
-      properties:
-        subject:
-          type: string
-        color:
-          type: string
-        organization:
-          type: string
-        team:
-          type: string
-        add_users:
-          type: array
-          items:
-            type: string
-        add_assignees:
-          type: array
-          items:
-            type: string
-        remove_assignees:
-          type: array
-          items:
-            type: string
-        add_shared_labels:
-          type: array
-          items:
-            type: string
-        remove_shared_labels:
-          type: array
-          items:
-            type: string
-        add_to_inbox:
-          type: boolean
-        add_to_team_inbox:
-          type: string
-          description: Team ID to add to that team's inbox
-        close:
-          type: boolean
-        reopen:
-          type: boolean
     Post:
       type: object
       properties:
@@ -518,6 +443,58 @@ components:
         created_at:
           type: integer
           format: int64
+    Attachment:
+      type: object
+      properties:
+        id:
+          type: string
+        filename:
+          type: string
+        extension:
+          type: string
+        media_type:
+          type: string
+        sub_type:
+          type: string
+        size:
+          type: integer
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+    MergeConversationRequest:
+      type: object
+      required:
+      - target
+      properties:
+        target:
+          type: string
+          description: Destination conversation ID
+        subject:
+          type: string
+          description: Subject for the merged conversation
+    DraftsResponse:
+      type: object
+      properties:
+        drafts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    MessagesResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
     Conversation:
       type: object
       properties:
@@ -560,13 +537,36 @@ components:
           type: boolean
         junked:
           type: boolean
-    PostsResponse:
+    Comment:
       type: object
       properties:
-        posts:
+        id:
+          type: string
+        body:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        mentions:
           type: array
           items:
-            $ref: '#/components/schemas/Post'
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        created_at:
+          type: integer
+          format: int64
   responses:
     BadRequest:
       description: Bad request — invalid parameters

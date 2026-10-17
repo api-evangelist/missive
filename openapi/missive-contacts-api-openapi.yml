@@ -137,53 +137,15 @@ paths:
         '404':
           description: Contact not found
 components:
+  parameters:
+    contactId:
+      name: id
+      in: path
+      required: true
+      description: Contact ID (supports comma-separated IDs for bulk operations)
+      schema:
+        type: string
   schemas:
-    Contact:
-      type: object
-      properties:
-        id:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        starred:
-          type: boolean
-        notes:
-          type: string
-        infos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactInfo'
-        memberships:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactMembership'
-        created_at:
-          type: integer
-          format: int64
-        updated_at:
-          type: integer
-          format: int64
-    UpdateContactRequest:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        starred:
-          type: boolean
-        notes:
-          type: string
-        infos:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactInfo'
-        memberships:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactMembership'
     ContactsResponse:
       type: object
       properties:
@@ -191,33 +153,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Contact'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-    ContactMembership:
-      type: object
-      required:
-      - group
-      properties:
-        group:
-          type: string
-          description: Group or organization ID
-        title:
-          type: string
-        location:
-          type: string
-        department:
-          type: string
-        description:
-          type: string
-    ContactResponse:
-      type: object
-      properties:
-        contacts:
-          $ref: '#/components/schemas/Contact'
     CreateContactRequest:
       type: object
       required:
@@ -261,6 +196,79 @@ components:
           type: string
         custom_label:
           type: string
+    ContactMembership:
+      type: object
+      required:
+      - group
+      properties:
+        group:
+          type: string
+          description: Group or organization ID
+        title:
+          type: string
+        location:
+          type: string
+        department:
+          type: string
+        description:
+          type: string
+    UpdateContactRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        starred:
+          type: boolean
+        notes:
+          type: string
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInfo'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactMembership'
+        created_at:
+          type: integer
+          format: int64
+        updated_at:
+          type: integer
+          format: int64
+    ContactResponse:
+      type: object
+      properties:
+        contacts:
+          $ref: '#/components/schemas/Contact'
   responses:
     BadRequest:
       description: Bad request — invalid parameters
@@ -268,14 +276,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    contactId:
-      name: id
-      in: path
-      required: true
-      description: Contact ID (supports comma-separated IDs for bulk operations)
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
