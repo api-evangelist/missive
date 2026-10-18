@@ -465,7 +465,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: missive-fivetran
   label: Fivetran
@@ -491,7 +491,7 @@
     - connectors/applications/missive
     vendor_link: https://missiveapp.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: missive-zoom-own
   label: Zoom (own)
