@@ -15,6 +15,7 @@ checked:
 - https://n8n.io/integrations/missive/
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/missive/integrations
+- zoom/integrations/zoom-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -870,6 +871,23 @@ edges:
     builder: Fivetran
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: Zoom (own)
+  partner: zoom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.zoom.us/apps/l05e-FouQI6Ja6G8qjC1FA
+  mirror_of: zoom/integrations/zoom-integration-edges.yml
+  apps:
+  - Missive
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Zoom app
 templates:
 - title: Send channel messages in Slack for new comments in Missive
   url: https://zapier.com/apps/missive/integrations/slack/614708/send-channel-messages-in-slack-for-new-comments-in-missive
