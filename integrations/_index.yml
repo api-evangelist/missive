@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/missive/integrations/slack/614708/send-channel-messages-in-slack-for-new-comments-in-missive
   template: https://zapier.com/apps/missive/integrations/slack/614708/send-channel-messages-in-slack-for-new-comments-in-missive
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: missive-add-new-slack-channel-messages-to-missive-conversations
@@ -29,6 +30,7 @@
   evidence: https://zapier.com/apps/missive/integrations/slack/614721/add-new-slack-channel-messages-to-missive-conversations
   template: https://zapier.com/apps/missive/integrations/slack/614721/add-new-slack-channel-messages-to-missive-conversations
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: missive-add-new-missive-tasks-to-clickup
@@ -43,6 +45,7 @@
   evidence: https://zapier.com/apps/clickup/integrations/missive/613021/add-new-missive-tasks-to-clickup
   template: https://zapier.com/apps/clickup/integrations/missive/613021/add-new-missive-tasks-to-clickup
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: missive-create-tasks-in-akiflow-from-new-comments-in-missive
@@ -56,7 +59,23 @@
   evidence: https://zapier.com/apps/akiflow/integrations/missive/1758466/create-tasks-in-akiflow-from-new-comments-in-missive
   template: https://zapier.com/apps/akiflow/integrations/missive/1758466/create-tasks-in-akiflow-from-new-comments-in-missive
   source: template
+  relationship: ipaas-bridge
   status: pending-partner-spec
+  arazzo: null
+- slug: missive-add-new-mailchimp-subscribers-to-missive-as-contacts
+  label: Add new Mailchimp subscribers to Missive as contacts
+  partner: mailchimp
+  partner_name: Mailchimp
+  category: Marketing Automation
+  use_case: Add new Mailchimp subscribers to Missive as contacts
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/mailchimp/integrations/missive/613535/add-new-mailchimp-subscribers-to-missive-as-contacts
+  template: https://zapier.com/apps/mailchimp/integrations/missive/613535/add-new-mailchimp-subscribers-to-missive-as-contacts
+  source: template
+  relationship: ipaas-bridge
+  status: pending-generation
   arazzo: null
 - slug: missive-create-airtable-records-for-new-missive-emails
   label: Create Airtable records for new Missive emails
@@ -70,6 +89,7 @@
   evidence: https://zapier.com/apps/airtable/integrations/missive/613550/create-airtable-records-for-new-missive-emails
   template: https://zapier.com/apps/airtable/integrations/missive/613550/create-airtable-records-for-new-missive-emails
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: missive-create-deals-in-hubspot-with-new-keywords-in-missive-comments
@@ -84,6 +104,7 @@
   evidence: https://zapier.com/apps/hubspot/integrations/missive/613571/create-deals-in-hubspot-with-new-keywords-in-missive-comments
   template: https://zapier.com/apps/hubspot/integrations/missive/613571/create-deals-in-hubspot-with-new-keywords-in-missive-comments
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: missive-generate-contacts-in-missive-from-new-typeform-entries
@@ -98,6 +119,7 @@
   evidence: https://zapier.com/apps/missive/integrations/typeform/614866/generate-contacts-in-missive-from-new-typeform-entries
   template: https://zapier.com/apps/missive/integrations/typeform/614866/generate-contacts-in-missive-from-new-typeform-entries
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: missive-add-new-missive-comments-to-rows-in-google-sheets
@@ -112,6 +134,7 @@
   evidence: https://zapier.com/apps/google-sheets/integrations/missive/614875/add-new-missive-comments-to-rows-in-google-sheets
   template: https://zapier.com/apps/google-sheets/integrations/missive/614875/add-new-missive-comments-to-rows-in-google-sheets
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: missive-create-notion-database-items-from-new-missive-comments
@@ -126,265 +149,8 @@
   evidence: https://zapier.com/apps/missive/integrations/notion/614898/create-notion-database-items-from-new-missive-comments
   template: https://zapier.com/apps/missive/integrations/notion/614898/create-notion-database-items-from-new-missive-comments
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
-  arazzo: null
-- slug: missive-heyflow
-  label: Heyflow
-  partner_name: Heyflow
-  category: Website & App Building
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/heyflow
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: missive-pipedrive
-  label: Pipedrive
-  partner: pipedrive
-  partner_name: Pipedrive
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/pipedrive
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-monday-com
-  label: monday.com
-  partner_name: monday.com
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/monday
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: missive-gmail
-  label: Gmail
-  partner: gmail
-  partner_name: Gmail
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/gmail
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: missive-telegram
-  label: Telegram
-  partner: telegram
-  partner_name: Telegram
-  category: Phone & SMS
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/telegram
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-shopify
-  label: Shopify
-  partner: shopify
-  partner_name: Shopify
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/shopify
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-seamless
-  label: Seamless
-  partner: seamless-ai
-  partner_name: Seamless
-  category: AI Sales Tools
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/seamless
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-precise-petcare
-  label: Precise Petcare
-  partner_name: Precise Petcare
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/precise-petcare
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: missive-sniply
-  label: Sniply
-  partner_name: Sniply
-  category: Ads & Conversion
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/sniply
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: missive-trello
-  label: Trello
-  partner: trello
-  partner_name: Trello
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/trello
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-aircall
-  label: Aircall
-  partner: aircall
-  partner_name: Aircall
-  category: Developer Tools
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/aircall
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-ticktick
-  label: TickTick
-  partner_name: TickTick
-  category: Task Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/ticktick
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: missive-paperform
-  label: Paperform
-  partner: paperform
-  partner_name: Paperform
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/paperform
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-microsoft-outlook
-  label: Microsoft Outlook
-  partner: microsoft-outlook
-  partner_name: Microsoft Outlook
-  category: Calendar
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/microsoft-outlook
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-google-docs
-  label: Google Docs
-  partner: google-docs
-  partner_name: Google Docs
-  category: Documents
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/google-docs
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-salesforce
-  label: Salesforce
-  partner: salesforce
-  partner_name: Salesforce
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/salesforce
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-google-business-profile
-  label: Google Business Profile
-  partner: google-business-profile
-  partner_name: Google Business Profile
-  category: Google
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/google-business-profile
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-ringcentral
-  label: RingCentral
-  partner: ringcentral
-  partner_name: RingCentral
-  category: Phone & SMS
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/ringcentral
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-affinity
-  label: Affinity
-  partner: affinity
-  partner_name: Affinity
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/affinity
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-google-contacts
-  label: Google Contacts
-  partner_name: Google Contacts
-  category: Contact Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/google-contacts
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: missive-quo
-  label: Quo
-  partner: quo
-  partner_name: Quo
-  category: Phone & SMS
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/quo
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: missive-motion
-  label: Motion
-  partner: motion
-  partner_name: Motion
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/missive/integrations/motion
-  source: edge
-  status: pending-partner-spec
   arazzo: null
 - slug: missive-zoom-own
   label: Zoom (own)
@@ -505,4 +271,273 @@
     sources: true
     builder: Pipedream repo (component)
   status: not-a-workflow
+  arazzo: null
+- slug: missive-heyflow
+  label: Heyflow
+  partner_name: Heyflow
+  category: Website & App Building
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/heyflow
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: missive-monday-com
+  label: monday.com
+  partner: monday-com
+  partner_name: monday.com
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/monday
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-gmail
+  label: Gmail
+  partner: gmail
+  partner_name: Gmail
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/gmail
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: missive-telegram
+  label: Telegram
+  partner: telegram
+  partner_name: Telegram
+  category: Phone & SMS
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/telegram
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-shopify
+  label: Shopify
+  partner: shopify
+  partner_name: Shopify
+  category: eCommerce
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/shopify
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-seamless
+  label: Seamless
+  partner: seamless-ai
+  partner_name: Seamless
+  category: AI Sales Tools
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/seamless
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-precise-petcare
+  label: Precise Petcare
+  partner_name: Precise Petcare
+  category: Scheduling & Booking
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/precise-petcare
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: missive-sniply
+  label: Sniply
+  partner_name: Sniply
+  category: Ads & Conversion
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/sniply
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: missive-trello
+  label: Trello
+  partner: trello
+  partner_name: Trello
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/trello
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-aircall
+  label: Aircall
+  partner: aircall
+  partner_name: Aircall
+  category: Developer Tools
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/aircall
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-ticktick
+  label: TickTick
+  partner_name: TickTick
+  category: Task Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/ticktick
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: missive-pipedrive
+  label: Pipedrive
+  partner: pipedrive
+  partner_name: Pipedrive
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/pipedrive
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-paperform
+  label: Paperform
+  partner: paperform
+  partner_name: Paperform
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/paperform
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-microsoft-outlook
+  label: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_name: Microsoft Outlook
+  category: Calendar
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/microsoft-outlook
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-google-docs
+  label: Google Docs
+  partner: google-docs
+  partner_name: Google Docs
+  category: Documents
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/google-docs
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-salesforce
+  label: Salesforce
+  partner: salesforce
+  partner_name: Salesforce
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/salesforce
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-google-business-profile
+  label: Google Business Profile
+  partner: google-business-profile
+  partner_name: Google Business Profile
+  category: Google
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/google-business-profile
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-ringcentral
+  label: RingCentral
+  partner: ringcentral
+  partner_name: RingCentral
+  category: Phone & SMS
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/ringcentral
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-affinity
+  label: Affinity
+  partner: affinity
+  partner_name: Affinity
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/affinity
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-google-contacts
+  label: Google Contacts
+  partner: google
+  partner_name: Google Contacts
+  category: Contact Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/google-contacts
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: missive-quo
+  label: Quo
+  partner: quo
+  partner_name: Quo
+  category: Phone & SMS
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/missive/integrations/quo
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
   arazzo: null
