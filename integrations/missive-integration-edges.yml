@@ -17,6 +17,7 @@ checked:
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/missive/integrations
 - zoom/integrations/zoom-integration-edges.yml
+- hubspot/integrations/hubspot-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -113,23 +114,6 @@ marketplace_apps:
   - key: MISSIVE_UPDATE_TASK
   - key: MISSIVE_UPDATE_TEAM
 edges:
-- partner_name: Zoom (own)
-  partner: zoom
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.zoom.us/apps/l05e-FouQI6Ja6G8qjC1FA
-  mirror_of: zoom/integrations/zoom-integration-edges.yml
-  apps:
-  - Missive
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Zoom app
 - partner_name: Airbyte
   partner: airbyte
   partner_match: aggregator
@@ -597,6 +581,40 @@ edges:
   direction: third-party
   category: Phone & SMS
   partner_url: https://quo.com/?utm_source=partnership&utm_medium=partner&utm_campaign=zapier
+- partner_name: Zoom (own)
+  partner: zoom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.zoom.us/apps/l05e-FouQI6Ja6G8qjC1FA
+  mirror_of: zoom/integrations/zoom-integration-edges.yml
+  apps:
+  - Missive
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Zoom app
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/missive
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - Missive
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: HELP_DESK
 templates:
 - title: Send channel messages in Slack for new comments in Missive
   url: https://zapier.com/apps/missive/integrations/slack/614708/send-channel-messages-in-slack-for-new-comments-in-missive
