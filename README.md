@@ -1,4 +1,4 @@
-# Missive (missive)
+# Missive
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,97 +64,141 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Missive is a team inbox and collaboration platform that brings email, SMS, WhatsApp, Instagram, Facebook Messenger, and live chat into one unified workspace. It provides a REST API for managing conversations, messages, contacts, labels, drafts, analytics, and automation rules, enabling teams to integrate Missive into business workflows. The API supports webhooks for real-time event notifications, custom channels for integrating external communication sources, and UI/iFrame integrations via JavaScript.
+Missive is a team inbox and collaboration platform that brings email, SMS, WhatsApp, Instagram, Facebook Messenger, and live chat into one unified workspace. It provides a REST API for managing conversations, messages, contacts, labels, drafts, analytics, and automation rules, enabling teams to integrate Missive into business workflows. The API supports webhooks for real-time event notifications, custom channels for integrating external communication sources, and UI/iFrame integrations via JavaScript. Developers can automate drafts, sync contacts, generate analytics reports, and build custom integrations with the platform.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/missive/refs/heads/main/apis.yml
+**Areas:** Team Inbox · Collaboration · Email · Messaging · Conversations · Contacts · Webhook · Automation · REST API
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=missive-api-evangelist&utm_content=repo
+## Missive on APIs.io
 
-## Tags
+Everything profiled for Missive is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/missive/](https://apis.io/providers/missive/)** — or go straight to one of the APIs or properties below.
 
-- Team Inbox
-- Collaboration
-- Email
-- Messaging
-- Conversations
-- Contacts
-- Webhooks
-- Automation
-- REST API
+### APIs (7)
 
-## APIs
+- [Missive Analytics API](https://apis.io/apis/missive/missive-analytics-api/) — Create and retrieve analytics reports
+- [Missive Contact Books API](https://apis.io/apis/missive/missive-contact-books-api/) — List available contact books
+- [Missive Contact Groups API](https://apis.io/apis/missive/missive-contact-groups-api/) — List contact groups and organizations
+- [Missive Contacts API](https://apis.io/apis/missive/missive-contacts-api/) — Manage contacts and contact data
+- [Missive Conversations API](https://apis.io/apis/missive/missive-conversations-api/) — Manage conversations in the inbox
+- [Missive Drafts API](https://apis.io/apis/missive/missive-drafts-api/) — Create and delete draft messages
+- [Missive Messages API](https://apis.io/apis/missive/missive-messages-api/) — Create messages in custom channels
 
-### Missive REST API
+### Published properties
 
-The Missive REST API allows developers to manage conversations, messages, contacts, drafts, labels, and analytics programmatically. Authentication uses Bearer tokens (personal access tokens with `missive_pat-` prefix) generated in Missive preferences under the API tab. The base URL is `https://public.missiveapp.com/v1/` and API access requires a Productive plan or higher subscription.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Documentation: https://missiveapp.com/docs/developers/rest-api
-- Endpoints: https://missiveapp.com/docs/developers/rest-api/endpoints
-- Base URL: https://public.missiveapp.com/v1/
+#### Agentic access (1)
 
-**Available Endpoints:**
-- Analytics: POST/GET `/v1/analytics/reports`
-- Contacts: POST/PATCH/GET `/v1/contacts`, GET `/v1/contact_books`, GET `/v1/contact_groups`
-- Conversations: GET/PATCH `/v1/conversations/:id`, POST `/v1/conversations/:id/merge`
-- Conversation content: GET messages, comments, drafts, posts per conversation
-- Drafts: POST/DELETE `/v1/drafts`
-- Messages: POST `/v1/messages` (custom channels)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Plans, Rate Limits, and FinOps
+- [Missive Agentic Access](https://apis.io/agentic-access/missive/missive-agentic-access/)
 
-### Plans
+#### JSON-LD (1)
 
-Missive offers three paid plans with a 20% discount for annual billing. API access requires the Productive plan or above. All plans include a 30-day free trial with no credit card required.
+Linked-data contexts for the provider's vocabulary.
 
-| Plan | Monthly Price | Annual Price | Users | API Access |
-|------|--------------|--------------|-------|------------|
-| Starter | $14/user/mo | $11.20/user/mo | Up to 5 | No |
-| Productive | $24/user/mo | $19.20/user/mo | Up to 50 | Yes |
-| Business | $36/user/mo | $28.80/user/mo | Unlimited | Yes |
+- [Missive Context](https://apis.io/jsonld/missive/missive-context/)
 
-Full plans detail: [plans/missive-plans-pricing.yml](plans/missive-plans-pricing.yml)
+#### Collections (7)
 
-### Rate Limits
+Postman and Open Collection request collections.
 
-The Missive API enforces the following rate limits per API token:
+- [Missive REST Analytics API](https://apis.io/collections/missive/open-missive-analytics-api/)
+- [Missive REST Analytics Contact Books API](https://apis.io/collections/missive/open-missive-contact-books-api/)
+- [Missive REST Analytics Contact Groups API](https://apis.io/collections/missive/open-missive-contact-groups-api/)
+- [Missive REST Analytics Contacts API](https://apis.io/collections/missive/open-missive-contacts-api/)
+- [Missive REST Analytics Conversations API](https://apis.io/collections/missive/open-missive-conversations-api/)
+- [Missive REST Analytics Drafts API](https://apis.io/collections/missive/open-missive-drafts-api/)
+- [Missive REST Analytics Messages API](https://apis.io/collections/missive/open-missive-messages-api/)
 
-| Limit Type | Limit |
-|-----------|-------|
-| Concurrent requests | 5 simultaneous |
-| Requests per minute | 300 |
-| Requests per 15 minutes | 900 |
+#### Security (4)
 
-HTTP 429 Too Many Requests is returned when any limit is exceeded.
+Authentication, trust centre, and vulnerability disclosure.
 
-Full rate limits detail: [rate-limits/missive-rate-limits.yml](rate-limits/missive-rate-limits.yml)
+- [Missive Authentication](https://apis.io/security/missive/missive-authentication/)
+- [Missive Domain Security](https://apis.io/security/missive/missive-domain-security/)
+- [Missive Trust Center](https://apis.io/security/missive/missive-trust-center/)
+- [Missive Vulnerability Disclosure](https://apis.io/security/missive/missive-vulnerability-disclosure/)
 
-### FinOps
+#### Plans and pricing (2)
 
-Cost optimization opportunities include:
-- Annual billing saves 20% across all plan tiers
-- Teams not requiring API access can use Starter ($14) instead of Productive ($24), saving $10/user/month
-- Regular audit of API token holders to right-size plan assignments
+Published plans, tiers and prices.
 
-Full FinOps detail: [finops/missive-finops.yml](finops/missive-finops.yml)
+- [Missive Plans Pricing](https://apis.io/plans/missive/missive-plans-pricing/)
+- [Missive Price Estimates](https://apis.io/plans/missive/missive-price-estimates/)
 
-## Timestamps
+#### Rate limits (1)
 
-- Created: 2026-06-12
-- Modified: 2026-06-12
+Published request limits.
 
-## Common
+- [Missive Rate Limits](https://apis.io/rate-limits/missive/missive-rate-limits/)
 
-| Type | URL |
-|------|-----|
-| Website | https://missiveapp.com |
-| Documentation | https://missiveapp.com/docs/developers/ |
-| GitHub Org | https://github.com/missive |
-| LinkedIn | https://www.linkedin.com/company/missive-app |
-| Blog | https://missiveapp.com/blog |
-| Pricing | https://missiveapp.com/pricing |
-| Status Page | https://status.missiveapp.com/ |
-| X (Twitter) | https://twitter.com/missiveapp |
+#### FinOps (1)
 
-## Maintainers
+What the API costs to run, by operation.
 
-- Kin Lane (kin@apievangelist.com)
+- [Missive Finops](https://apis.io/finops/missive/missive-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://missiveapp.com)
+- [Documentation](https://missiveapp.com/docs/developers/)
+- [Pricing](https://missiveapp.com/pricing)
+- [Blog](https://missiveapp.com/blog)
+- [Status](https://status.missiveapp.com/)
+
+## API Evangelist rating
+
+**Kin Score 46.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 55.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 55.3 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 50.0 |
+
+**Agent readiness 21.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/missive/](https://apis.io/providers/missive/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Missive: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/missive/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
